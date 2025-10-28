@@ -1,0 +1,3 @@
+This is a placeholder for an image file.
+For the actual implementation, replace this with a real image file (jpg, png, etc.) of a confident public speaker addressing an audience.
+The image should convey confidence, engagement, and professionalism to match the theme of the course.
