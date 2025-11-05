@@ -38,12 +38,15 @@ function App() {
                   every time you step up to speak.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
-                  <button
+                  <a
+                    href="https://buy.stripe.com/7sYeV6g8Iawi0hz50ndfG02"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-4 rounded-full font-semibold text-white text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     style={{ backgroundColor: '#ca3433' }}
                   >
                     Enroll Now
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -71,7 +74,7 @@ function App() {
                         Schedule
                       </h4>
                       <p className="text-gray-700">
-                        November 2, 9, 16 and 23
+                        Nov 23, 30, Dec 7 & 14
                       </p>
                     </div>
                   </div>
