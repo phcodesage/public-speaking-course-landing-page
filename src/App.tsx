@@ -102,7 +102,7 @@ function App() {
                         Investment
                       </h4>
                       <p className="text-2xl font-bold" style={{ color: '#ca3433' }}>
-                        $359
+                        $399
                       </p>
                       <p className="text-sm text-gray-600">Full course</p>
                     </div>
