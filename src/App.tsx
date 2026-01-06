@@ -102,7 +102,7 @@ function App() {
                       Investment Per Level
                     </h4>
                     <p className="text-2xl font-bold" style={{ color: '#ca3433' }}>
-                      $399
+                      $439
                     </p>
                     <p className="text-sm text-gray-600">Per course level</p>
                   </div>
@@ -160,7 +160,7 @@ function App() {
                       <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
                       <div>
                         <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
-                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>$399</p>
+                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>$439</p>
                       </div>
                     </div>
                   </div>
