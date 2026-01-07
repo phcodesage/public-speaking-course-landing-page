@@ -166,7 +166,7 @@ function App() {
                   </div>
 
                   <a
-                    href="https://buy.stripe.com/7sYeV6g8Iawi0hz50ndfG02"
+                    href="https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
