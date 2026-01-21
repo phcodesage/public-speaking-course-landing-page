@@ -20,8 +20,8 @@ function App() {
       title: 'Beginner',
       level: 'Level 1',
       icon: <Award className="w-8 h-8 text-white" />,
-      schedule: 'Starts Jan 18 • 4 Sundays',
-      dates: 'Jan 18, 25, Feb 1, 8',
+      schedule: 'Starts Feb 1 • 4 Sundays',
+      dates: 'Feb 1, 8, 15, 22',
       time: '2:00 PM - 4:00 PM',
       description: 'Build your foundation in public speaking. Perfect for those new to presenting or looking to overcome stage fright.',
       color: '#0e1f3e'
