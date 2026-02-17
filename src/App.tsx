@@ -10,6 +10,8 @@ interface CourseLevel {
   time: string;
   description: string;
   color: string;
+  price: string;
+  stripeLink: string;
 }
 
 function App() {
@@ -17,14 +19,16 @@ function App() {
 
   const courseLevels: CourseLevel[] = [
     {
-      title: 'Beginner',
+      title: 'Crash Course',
       level: 'Level 1',
       icon: <Award className="w-8 h-8 text-white" />,
-      schedule: 'Starts Feb 1 • 4 Sundays',
-      dates: 'Feb 1, 8, 15, 22',
-      time: '2:00 PM - 4:00 PM',
-      description: 'Build your foundation in public speaking. Perfect for those new to presenting or looking to overcome stage fright.',
-      color: '#0e1f3e'
+      schedule: 'Feb 22 • 1 Day Only',
+      dates: 'Feb 22',
+      time: '2:00 PM - 5:00 PM',
+      description: 'An intensive crash course to jumpstart your public speaking journey. Perfect for busy professionals who want quick, impactful results.',
+      color: '#0e1f3e',
+      price: '$139',
+      stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i'
     },
     {
       title: 'Intermediate',
@@ -34,7 +38,9 @@ function App() {
       dates: 'March 1, 8, 15, 22',
       time: '2:00 PM - 4:00 PM',
       description: 'Enhance your skills with advanced techniques. Learn storytelling, audience engagement, and persuasive speaking.',
-      color: '#ca3433'
+      color: '#ca3433',
+      price: '$439',
+      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b'
     },
     {
       title: 'Master',
@@ -44,7 +50,9 @@ function App() {
       dates: 'April 12, 19, 26 & May 3',
       time: '2:00 PM - 4:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
-      color: '#0e1f3e'
+      color: '#0e1f3e',
+      price: '$439',
+      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b'
     }
   ];
 
@@ -209,13 +217,13 @@ function App() {
                       <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
                       <div>
                         <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
-                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>$439</p>
+                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
                       </div>
                     </div>
                   </div>
 
                   <a
-                    href="https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b"
+                    href={course.stripeLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
