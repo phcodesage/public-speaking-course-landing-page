@@ -22,8 +22,8 @@ function App() {
       title: 'Crash Course',
       level: 'Level 1',
       icon: <Award className="w-8 h-8 text-white" />,
-      schedule: 'Feb 22 • 1 Day Only',
-      dates: 'Feb 22',
+      schedule: 'March 22 • 1 Day Only',
+      dates: 'March 22',
       time: '2:00 PM - 5:00 PM',
       description: 'An intensive crash course to jumpstart your public speaking journey. Perfect for busy professionals who want quick, impactful results.',
       color: '#0e1f3e',
@@ -31,15 +31,15 @@ function App() {
       stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i'
     },
     {
-      title: 'Intermediate',
+      title: 'Crash Course',
       level: 'Level 2',
       icon: <TrendingUp className="w-8 h-8 text-white" />,
-      schedule: 'Starts March 1 • 4 Sundays',
-      dates: 'March 1, 8, 15, 22',
-      time: '2:00 PM - 4:00 PM',
+      schedule: 'March 29 • 1 Day Only',
+      dates: 'March 29',
+      time: '2:00 PM - 5:00 PM',
       description: 'Enhance your skills with advanced techniques. Learn storytelling, audience engagement, and persuasive speaking.',
       color: '#ca3433',
-      price: '$439',
+      price: '$139',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b'
     },
     {
