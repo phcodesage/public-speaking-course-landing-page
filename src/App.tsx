@@ -1,17 +1,27 @@
-import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video } from 'lucide-react';
+import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Zap } from 'lucide-react';
 import { useState } from 'react';
+
+interface CrashCourse {
+  dates: string;
+  time: string;
+  price: string;
+  stripeLink: string;
+  showDate: boolean;
+}
 
 interface CourseLevel {
   title: string;
   level: string;
   icon: React.ReactNode;
-  schedule: string;
-  dates: string;
-  time: string;
   description: string;
   color: string;
   price: string;
   stripeLink: string;
+  showDate: boolean;
+  schedule?: string;
+  dates?: string;
+  time?: string;
+  crashCourse: CrashCourse;
 }
 
 function App() {
@@ -19,41 +29,56 @@ function App() {
 
   const courseLevels: CourseLevel[] = [
     {
-      title: 'Crash Course',
-      level: 'Level 1',
+      title: 'Level 1',
+      level: 'Public Speaking',
       icon: <Award className="w-8 h-8 text-white" />,
-      schedule: 'March 22 • 1 Day Only',
-      dates: 'March 22',
-      time: '2:00 PM - 5:00 PM',
-      description: 'An intensive crash course to jumpstart your public speaking journey. Perfect for busy professionals who want quick, impactful results.',
+      description: 'An intensive introduction to public speaking. Build your foundational confidence, vocal power, and stage presence.',
       color: '#0e1f3e',
       price: '$139',
-      stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i'
+      stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
+      showDate: false,
+      crashCourse: {
+        dates: 'March 22, 2026',
+        time: '2:00 PM – 5:00 PM',
+        price: '$139',
+        stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
+        showDate: true,
+      }
     },
     {
-      title: 'Crash Course',
-      level: 'Level 2',
+      title: 'Level 2',
+      level: 'Public Speaking',
       icon: <TrendingUp className="w-8 h-8 text-white" />,
-      schedule: 'March 29 • 1 Day Only',
-      dates: 'March 29',
-      time: '2:00 PM - 5:00 PM',
-      description: 'Enhance your skills with advanced techniques. Learn storytelling, audience engagement, and persuasive speaking.',
+      description: 'Enhance your skills with advanced techniques. Master storytelling, audience engagement, and persuasive speaking.',
       color: '#ca3433',
       price: '$139',
-      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b'
+      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
+      showDate: false,
+      crashCourse: {
+        dates: 'March 29, 2026',
+        time: '2:00 PM – 5:00 PM',
+        price: '$139',
+        stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
+        showDate: true,
+      }
     },
     {
-      title: 'Master',
-      level: 'Level 3',
+      title: 'Level 3',
+      level: 'Public Speaking',
       icon: <Crown className="w-8 h-8 text-white" />,
-      schedule: 'Starts April 12 • 4 Sundays',
-      dates: 'April 12, 19, 26 & May 3',
-      time: '2:00 PM - 4:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
       color: '#0e1f3e',
       price: '$439',
-      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b'
-    }
+      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
+      showDate: false,
+      crashCourse: {
+        dates: 'Coming Soon',
+        time: '2:00 PM – 4:00 PM',
+        price: '$139',
+        stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
+        showDate: false,
+      }
+    },
   ];
 
   return (
@@ -172,66 +197,129 @@ function App() {
             Choose Your Level
           </h3>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {courseLevels.map((course, index) => (
-              <div
-                key={index}
-                className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105"
-                style={{ backgroundColor: '#fff' }}
-              >
-                {/* Card Header */}
+              <div key={index} className="flex flex-col gap-4">
+
+                {/* ── Main Level Card ── */}
                 <div
-                  className="px-6 py-8 text-center"
-                  style={{ backgroundColor: course.color }}
+                  className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105"
+                  style={{ backgroundColor: '#fff' }}
                 >
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
-                    {course.icon}
-                  </div>
-                  <h4 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
-                  <p className="text-white/80 text-base">{course.level}</p>
-                </div>
-
-                {/* Card Body */}
-                <div className="px-6 py-8">
-                  <p className="text-gray-600 mb-6 min-h-[72px] text-lg">
-                    {course.description}
-                  </p>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start gap-3">
-                      <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                      <div>
-                        <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
-                        <p className="text-gray-600 text-base">{course.schedule}</p>
-                        <p className="text-sm font-medium mt-1" style={{ color: '#ca3433' }}>{course.dates}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                      <div>
-                        <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
-                        <p className="text-gray-600 text-base">{course.time}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                      <div>
-                        <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
-                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <a
-                    href={course.stripeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
+                  {/* Card Header */}
+                  <div
+                    className="px-6 py-8 text-center"
                     style={{ backgroundColor: course.color }}
                   >
-                    Enroll Now
-                  </a>
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
+                      {course.icon}
+                    </div>
+                    <h4 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
+                    <p className="text-white/80 text-base">{course.level}</p>
+                  </div>
+
+                  {/* Card Body */}
+                  <div className="px-6 py-8">
+                    <p className="text-gray-600 mb-6 text-lg">
+                      {course.description}
+                    </p>
+
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-start gap-3">
+                        <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                        <div>
+                          <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
+                          <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a
+                      href={course.stripeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
+                      style={{ backgroundColor: course.color }}
+                    >
+                      Enroll Now
+                    </a>
+                  </div>
                 </div>
+
+                {/* ── Crash Course Sub-Card ── */}
+                <div
+                  className="rounded-2xl shadow-lg overflow-hidden border-2 transition-transform duration-300 hover:scale-105"
+                  style={{ borderColor: course.color, backgroundColor: '#fff' }}
+                >
+                  {/* Crash Course Header */}
+                  <div
+                    className="px-5 py-4 flex items-center gap-3"
+                    style={{ backgroundColor: course.color + '15' }}
+                  >
+                    <div
+                      className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: course.color }}
+                    >
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: course.color }}>
+                        {course.title}
+                      </p>
+                      <h5 className="text-base font-bold" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                        Crash Course
+                      </h5>
+                    </div>
+                    <div className="ml-auto">
+                      <span
+                        className="text-lg font-extrabold"
+                        style={{ color: course.color }}
+                      >
+                        {course.crashCourse.price}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Crash Course Body */}
+                  <div className="px-5 py-4 space-y-3">
+                    {course.crashCourse.showDate ? (
+                      <>
+                        <div className="flex items-center gap-3">
+                          <Calendar className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
+                          <div>
+                            <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Date</p>
+                            <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                              {course.crashCourse.dates}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Clock className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
+                          <div>
+                            <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Time</p>
+                            <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                              {course.crashCourse.time}
+                            </p>
+                          </div>
+                        </div>
+                        <a
+                          href={course.crashCourse.stripeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90"
+                          style={{ backgroundColor: course.color }}
+                        >
+                          Enroll in Crash Course
+                        </a>
+                      </>
+                    ) : (
+                      <div className="py-2 text-center">
+                        <p className="text-sm text-gray-500 italic">Date coming soon — stay tuned!</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
               </div>
             ))}
           </div>
