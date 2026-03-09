@@ -34,7 +34,7 @@ function App() {
       icon: <Award className="w-8 h-8 text-white" />,
       description: 'An intensive introduction to public speaking. Build your foundational confidence, vocal power, and stage presence.',
       color: '#0e1f3e',
-      price: '$139',
+      price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
       showDate: false,
       crashCourse: {
@@ -51,7 +51,7 @@ function App() {
       icon: <TrendingUp className="w-8 h-8 text-white" />,
       description: 'Enhance your skills with advanced techniques. Master storytelling, audience engagement, and persuasive speaking.',
       color: '#ca3433',
-      price: '$139',
+      price: '$439',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
       showDate: false,
       crashCourse: {
@@ -70,7 +70,7 @@ function App() {
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
-      showDate: false,
+      showDate: true,
       crashCourse: {
         dates: 'Coming Soon',
         time: '2:00 PM – 4:00 PM',
@@ -234,15 +234,24 @@ function App() {
                       </div>
                     </div>
 
-                    <a
-                      href={course.stripeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
-                      style={{ backgroundColor: course.color }}
-                    >
-                      Enroll Now
-                    </a>
+                    {course.showDate ? (
+                      <a
+                        href={course.stripeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
+                        style={{ backgroundColor: course.color }}
+                      >
+                        Enroll Now
+                      </a>
+                    ) : (
+                      <div
+                        className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
+                        style={{ backgroundColor: course.color }}
+                      >
+                        Coming Soon
+                      </div>
+                    )}
                   </div>
                 </div>
 
