@@ -36,7 +36,7 @@ function App() {
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
-      showDate: true,
+      showDate: false,
       crashCourse: {
         dates: 'March 22, 2026',
         time: '2:00 PM – 5:00 PM',
@@ -53,7 +53,7 @@ function App() {
       color: '#ca3433',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
-      showDate: true,
+      showDate: false,
       crashCourse: {
         dates: 'March 29, 2026',
         time: '2:00 PM – 5:00 PM',
