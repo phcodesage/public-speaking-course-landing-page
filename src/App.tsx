@@ -66,11 +66,14 @@ function App() {
       title: 'Level 3',
       level: 'Public Speaking',
       icon: <Crown className="w-8 h-8 text-white" />,
+      schedule: 'Starts April 12 • 4 Sundays',
+      dates: 'April 12, 19, 26 & May 3',
+      time: '2:00 PM - 4:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
       color: '#0e1f3e',
-      price: '$439',
+      price: '$1200(all 3 levels)',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
-      showDate: false,
+      showDate: true,
       crashCourse: {
         dates: 'Coming Soon',
         time: '2:00 PM – 4:00 PM',
@@ -232,6 +235,38 @@ function App() {
                           <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
                         </div>
                       </div>
+
+                      {course.showDate && course.dates ? (
+                        <>
+                          {course.schedule ? (
+                            <div className="flex items-start gap-3">
+                              <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                              <div>
+                                <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
+                                <p className="text-sm text-gray-600">{course.schedule}</p>
+                              </div>
+                            </div>
+                          ) : null}
+
+                          <div className="flex items-start gap-3">
+                            <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                            <div>
+                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Dates</p>
+                              <p className="text-sm text-gray-600">{course.dates}</p>
+                            </div>
+                          </div>
+
+                          {course.time ? (
+                            <div className="flex items-start gap-3">
+                              <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                              <div>
+                                <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
+                                <p className="text-sm text-gray-600">{course.time}</p>
+                              </div>
+                            </div>
+                          ) : null}
+                        </>
+                      ) : null}
                     </div>
 
                     {course.showDate ? (
