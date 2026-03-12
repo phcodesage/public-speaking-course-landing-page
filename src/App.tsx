@@ -71,8 +71,8 @@ function App() {
       time: '2:00 PM - 4:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
       color: '#0e1f3e',
-      price: '$1200(all 3 levels)',
-      stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
+      price: '$439',
+      stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
       crashCourse: {
         dates: 'Coming Soon',
@@ -366,6 +366,24 @@ function App() {
 
               </div>
             ))}
+          </div>
+
+          {/* All 3 Levels Bundle CTA */}
+          <div className="mb-12">
+            <div className="p-1 rounded-3xl bg-gradient-to-r from-yellow-400 to-yellow-500">
+              <a
+                href="https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-4 w-full px-12 py-8 rounded-3xl font-bold text-white text-2xl lg:text-3xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                <Crown className="w-8 h-8 text-yellow-400 flex-shrink-0" />
+                🎉 Avail All 3 Courses — $1,200
+                <Crown className="w-8 h-8 text-yellow-400 flex-shrink-0" />
+              </a>
+            </div>
+            <p className="mt-3 text-sm text-gray-500 text-center">Save $117 when you enroll in all 3 levels</p>
           </div>
 
           {/* Podcast Video Section */}
