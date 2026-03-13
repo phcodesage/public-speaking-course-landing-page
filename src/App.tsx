@@ -68,7 +68,7 @@ function App() {
       icon: <Crown className="w-8 h-8 text-white" />,
       schedule: 'Starts April 12 • 4 Sundays',
       dates: 'April 12, 19, 26 & May 3',
-      time: '2:00 PM - 4:00 PM',
+      time: '12:00 PM - 3:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
       color: '#0e1f3e',
       price: '$439',
