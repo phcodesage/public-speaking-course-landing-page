@@ -202,175 +202,196 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Course Levels Section */}
-          <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
-            Choose Your Level
-          </h3>
+          {/* ── CRASH COURSE Section ── */}
+          <div className="mb-4">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
+              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#ca3433' }}>
+                <Zap className="w-5 h-5 text-white" />
+                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  CRASH COURSE
+                </h3>
+                <Zap className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-14">
+            {courseLevels.map((course, index) => (
+              <div
+                key={`crash-${index}`}
+                className="rounded-2xl shadow-lg overflow-hidden border-2 transition-transform duration-300 hover:scale-105"
+                style={{ borderColor: course.color, backgroundColor: '#fff' }}
+              >
+                {/* Crash Course Header */}
+                <div
+                  className="px-5 py-4 flex items-center gap-3"
+                  style={{ backgroundColor: course.color + '15' }}
+                >
+                  <div
+                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: course.color }}
+                  >
+                    <Zap className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest" style={{ color: course.color }}>
+                      {course.title}
+                    </p>
+                    <h5 className="text-base font-bold" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                      CRASH COURSE
+                    </h5>
+                  </div>
+                  <div className="ml-auto">
+                    <span
+                      className="text-lg font-extrabold"
+                      style={{ color: course.color }}
+                    >
+                      {course.crashCourse.price}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Crash Course Body */}
+                <div className="px-5 py-4 space-y-3">
+                  {course.crashCourse.showDate ? (
+                    <>
+                      <div className="flex items-center gap-3">
+                        <Calendar className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
+                        <div>
+                          <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Date</p>
+                          <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                            {course.crashCourse.dates}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
+                        <div>
+                          <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Time</p>
+                          <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                            {course.crashCourse.time}
+                          </p>
+                        </div>
+                      </div>
+                      <a
+                        href={course.crashCourse.stripeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90"
+                        style={{ backgroundColor: course.color }}
+                      >
+                        Enroll in Crash Course
+                      </a>
+                    </>
+                  ) : (
+                    <div className="py-2 text-center">
+                      <p className="text-sm text-gray-500 italic">Date coming soon — stay tuned!</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── PUBLIC SPEAKING CLASSES Section ── */}
+          <div className="mb-4">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#0e1f3e' }}>
+                <Award className="w-5 h-5 text-white" />
+                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  PUBLIC SPEAKING CLASSES
+                </h3>
+                <Award className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+            </div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {courseLevels.map((course, index) => (
-              <div key={index} className="flex flex-col gap-4">
-
-                {/* ── Main Level Card ── */}
+              <div key={`regular-${index}`} className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105" style={{ backgroundColor: '#fff' }}>
+                {/* Card Header */}
                 <div
-                  className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105"
-                  style={{ backgroundColor: '#fff' }}
+                  className="px-6 py-8 text-center"
+                  style={{ backgroundColor: course.color }}
                 >
-                  {/* Card Header */}
-                  <div
-                    className="px-6 py-8 text-center"
-                    style={{ backgroundColor: course.color }}
-                  >
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
-                      {course.icon}
-                    </div>
-                    <h4 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
-                    <p className="text-white/80 text-base">{course.level}</p>
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
+                    {course.icon}
                   </div>
+                  <h4 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
+                  <p className="text-white/80 text-base">{course.level}</p>
+                </div>
 
-                  {/* Card Body */}
-                  <div className="px-6 py-8">
-                    <p className="text-gray-600 mb-6 text-lg">
-                      {course.description}
-                    </p>
+                {/* Card Body */}
+                <div className="px-6 py-8">
+                  <p className="text-gray-600 mb-6 text-lg">
+                    {course.description}
+                  </p>
 
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-start gap-3">
-                        <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                        <div>
-                          <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
-                          <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
-                        </div>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start gap-3">
+                      <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                      <div>
+                        <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
+                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
                       </div>
+                    </div>
 
-                      {course.showDate && course.dates ? (
-                        <>
-                          {course.schedule ? (
-                            <div className="flex items-start gap-3">
-                              <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                              <div>
-                                <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
-                                <p className="text-sm text-gray-600">{course.schedule}</p>
-                              </div>
-                            </div>
-                          ) : null}
-
+                    {course.showDate && course.dates ? (
+                      <>
+                        {course.schedule ? (
                           <div className="flex items-start gap-3">
                             <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
                             <div>
-                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Dates</p>
-                              <p className="text-sm text-gray-600">{course.dates}</p>
+                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
+                              <p className="text-sm text-gray-600">{course.schedule}</p>
                             </div>
                           </div>
+                        ) : null}
 
-                          {course.time ? (
-                            <div className="flex items-start gap-3">
-                              <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                              <div>
-                                <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
-                                <p className="text-sm text-gray-600">{course.time}</p>
-                              </div>
+                        <div className="flex items-start gap-3">
+                          <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                          <div>
+                            <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Dates</p>
+                            <p className="text-sm text-gray-600">{course.dates}</p>
+                          </div>
+                        </div>
+
+                        {course.time ? (
+                          <div className="flex items-start gap-3">
+                            <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                            <div>
+                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
+                              <p className="text-sm text-gray-600">{course.time}</p>
                             </div>
-                          ) : null}
-                        </>
-                      ) : null}
-                    </div>
-
-                    {course.showDate ? (
-                      <a
-                        href={course.stripeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
-                        style={{ backgroundColor: course.color }}
-                      >
-                        Enroll Now
-                      </a>
-                    ) : (
-                      <div
-                        className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
-                        style={{ backgroundColor: course.color }}
-                      >
-                        Coming Soon
-                      </div>
-                    )}
+                          </div>
+                        ) : null}
+                      </>
+                    ) : null}
                   </div>
-                </div>
 
-                {/* ── Crash Course Sub-Card ── */}
-                <div
-                  className="rounded-2xl shadow-lg overflow-hidden border-2 transition-transform duration-300 hover:scale-105"
-                  style={{ borderColor: course.color, backgroundColor: '#fff' }}
-                >
-                  {/* Crash Course Header */}
-                  <div
-                    className="px-5 py-4 flex items-center gap-3"
-                    style={{ backgroundColor: course.color + '15' }}
-                  >
-                    <div
-                      className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
+                  {course.showDate ? (
+                    <a
+                      href={course.stripeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
                       style={{ backgroundColor: course.color }}
                     >
-                      <Zap className="w-5 h-5 text-white" />
+                      Enroll Now
+                    </a>
+                  ) : (
+                    <div
+                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
+                      style={{ backgroundColor: course.color }}
+                    >
+                      Coming Soon
                     </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: course.color }}>
-                        {course.title}
-                      </p>
-                      <h5 className="text-base font-bold" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
-                        Crash Course
-                      </h5>
-                    </div>
-                    <div className="ml-auto">
-                      <span
-                        className="text-lg font-extrabold"
-                        style={{ color: course.color }}
-                      >
-                        {course.crashCourse.price}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Crash Course Body */}
-                  <div className="px-5 py-4 space-y-3">
-                    {course.crashCourse.showDate ? (
-                      <>
-                        <div className="flex items-center gap-3">
-                          <Calendar className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
-                          <div>
-                            <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Date</p>
-                            <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
-                              {course.crashCourse.dates}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Clock className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
-                          <div>
-                            <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Time</p>
-                            <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
-                              {course.crashCourse.time}
-                            </p>
-                          </div>
-                        </div>
-                        <a
-                          href={course.crashCourse.stripeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90"
-                          style={{ backgroundColor: course.color }}
-                        >
-                          Enroll in Crash Course
-                        </a>
-                      </>
-                    ) : (
-                      <div className="py-2 text-center">
-                        <p className="text-sm text-gray-500 italic">Date coming soon — stay tuned!</p>
-                      </div>
-                    )}
-                  </div>
+                  )}
                 </div>
-
               </div>
             ))}
           </div>
@@ -494,42 +515,63 @@ export default function Home() {
         </main>
       </div>
 
-      <footer className="py-12 md:py-16 w-full mt-auto" style={{ backgroundColor: '#0e1f3e' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
+      <footer className="w-full mt-auto" style={{ backgroundColor: '#0e1f3e', borderTop: '4px solid #ca3433' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-12 items-start">
             {/* Phone */}
-            <div className="flex items-center gap-4 lg:gap-5 justify-center md:justify-start">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#cf3736', border: '5px solid #a82928' }}>
-                <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <div className="flex flex-col items-center md:items-start text-center md:text-left group">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e63e3d] shadow-lg shadow-black/20" style={{ backgroundColor: '#cf3736', border: '2px solid rgba(255,255,255,0.1)' }}>
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Call Us</h4>
               </div>
-              <div className="text-left">
-                <h4 className="text-white font-extrabold tracking-wide text-sm sm:text-base mb-1 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>Phone Number:</h4>
-                <p className="text-white font-bold text-lg sm:text-xl tracking-wide">+1 (516) 226-3114</p>
-              </div>
+              <p className="text-white font-bold text-lg tracking-wide group-hover:text-red-400 transition-colors">+1 (516) 226-3114</p>
             </div>
 
             {/* Location */}
-            <div className="flex items-center gap-4 lg:gap-5 justify-center md:justify-center border-t border-b md:border-t-0 md:border-b-0 border-white/10 py-6 md:py-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#cf3736', border: '5px solid #a82928' }}>
-                <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <div className="flex flex-col items-center md:items-start text-center md:text-left border-y md:border-y-0 border-white/5 py-8 md:py-0 group">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e63e3d] shadow-lg shadow-black/20" style={{ backgroundColor: '#cf3736', border: '2px solid rgba(255,255,255,0.1)' }}>
+                  <MapPin className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Visit Us</h4>
               </div>
-              <div className="text-left">
-                <h4 className="text-white font-extrabold tracking-wide text-sm sm:text-base mb-1 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>Our Location:</h4>
-                <p className="text-white text-base sm:text-lg font-medium tracking-wide">1360 Willis Ave., Albertson NY 11507</p>
-              </div>
+              <p className="text-white text-base font-medium tracking-wide leading-relaxed group-hover:text-red-400 transition-colors">
+                1360 Willis Ave.<br/>Albertson NY 11507
+              </p>
             </div>
 
             {/* Email */}
-            <div className="flex items-center gap-4 lg:gap-5 justify-center md:justify-end">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#cf3736', border: '5px solid #a82928' }}>
-                <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <div className="flex flex-col items-center md:items-start text-center md:text-left group">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e63e3d] shadow-lg shadow-black/20" style={{ backgroundColor: '#cf3736', border: '2px solid rgba(255,255,255,0.1)' }}>
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email Us</h4>
               </div>
-              <div className="text-left">
-                <h4 className="text-white font-extrabold tracking-wide text-sm sm:text-base mb-1 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email Address:</h4>
-                <a href="mailto:info@exceedlearningcenter.com" className="text-white font-bold text-base sm:text-lg underline hover:text-gray-300 transition-colors tracking-wide">
-                  Email us directly [+]
-                </a>
-              </div>
+              <a 
+                href="mailto:programs@exceedlearningcenterny.com" 
+                className="text-white font-bold text-sm sm:text-base lg:text-lg hover:text-red-400 transition-all duration-300 break-all md:break-words decoration-red-500/30 hover:decoration-red-500 underline underline-offset-8"
+              >
+                programs@exceedlearningcenterny.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="w-full py-6 border-t border-white/5" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3">
+              <img src="/images/exceed-logo.png" alt="Exceed Logo" className="h-6 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all" />
+              <p className="text-gray-500 text-[11px] font-medium tracking-wider uppercase">
+                &copy; {new Date().getFullYear()} Exceed Learning Center. All rights reserved.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+              <span className="text-gray-400 text-[11px] font-bold tracking-[0.2em] uppercase cursor-default">Ignite Your Brilliance</span>
             </div>
           </div>
         </div>
