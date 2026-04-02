@@ -34,15 +34,16 @@ export default function Home() {
       title: 'Level 1',
       level: 'Public Speaking',
       icon: <Award className="w-8 h-8 text-white" />,
-      description: 'An intensive introduction to public speaking. Build your foundational confidence, vocal power, and stage presence.',
+      description: 'Focuses on building foundational confidence and a grounded stage presence.',
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
       showDate: true,
-      dates: 'June 14, 2026',
+      dates: 'April 12, 2026',
+      time: '12:00 PM – 2:00 PM',
       crashCourse: {
-        dates: 'April 12, 2026',
-        time: '12:00 PM – 2:00 PM',
+        dates: 'June 1, 2026',
+        time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
         showDate: true,
@@ -52,15 +53,16 @@ export default function Home() {
       title: 'Level 2',
       level: 'Public Speaking',
       icon: <TrendingUp className="w-8 h-8 text-white" />,
-      description: 'Enhance your skills with advanced techniques. Master storytelling, audience engagement, and persuasive speaking.',
+      description: 'Mastery of storytelling, audience engagement, and persuasive speaking.',
       color: '#ca3433',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
       showDate: true,
-      dates: 'June 21, 2026',
+      dates: 'April 12, 2026',
+      time: '2:30 PM – 4:30 PM',
       crashCourse: {
-        dates: 'April 12, 2026',
-        time: '2:30 PM – 4:30 PM',
+        dates: 'June 14, 2026',
+        time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
         showDate: true,
@@ -70,16 +72,14 @@ export default function Home() {
       title: 'Level 3',
       level: 'Public Speaking',
       icon: <Crown className="w-8 h-8 text-white" />,
-      dates: 'June 28, 2026',
-      time: '12:00 PM - 3:00 PM',
       description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
-      showDate: true,
+      showDate: false,
       crashCourse: {
-        dates: 'May 17, 2026',
-        time: '1:00 PM – 4:00 PM',
+        dates: 'June 28, 2026',
+        time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b',
         showDate: true,
@@ -416,8 +416,8 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <Calendar className="w-6 h-6 flex-shrink-0" style={{ color: '#ca3433' }} />
                     <div className="text-left">
-                      <p className="font-semibold text-base sm:text-lg" style={{ color: '#0e1f3e' }}>Starts June 29</p>
-                      <p className="text-sm sm:text-base text-gray-600">Mon & Thu (8 Weeks)</p>
+                      <p className="font-semibold text-base sm:text-lg" style={{ color: '#0e1f3e' }}>Starts June 30</p>
+                      <p className="text-sm sm:text-base text-gray-600">Tue & Thu (8 Weeks)</p>
                       <p className="text-sm sm:text-base text-gray-600">Ends August 20</p>
                     </div>
                   </div>
@@ -425,7 +425,7 @@ export default function Home() {
                     <Clock className="w-6 h-6 flex-shrink-0" style={{ color: '#ca3433' }} />
                     <div className="text-left">
                       <p className="font-semibold text-base sm:text-lg" style={{ color: '#0e1f3e' }}>Time</p>
-                      <p className="text-sm sm:text-base text-gray-600">12:00 PM – 3:00 PM</p>
+                      <p className="text-sm sm:text-base text-gray-600">3:00 PM – 5:00 PM</p>
                     </div>
                   </div>
                 </div>
