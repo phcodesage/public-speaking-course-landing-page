@@ -573,10 +573,10 @@ export default function Home() {
                 <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email Us</h4>
               </div>
               <a 
-                href="mailto:programs@exceedlearningcenterny.com" 
+                href="mailto:teenprograms@exceedlearningcenterny.com" 
                 className="text-white font-bold text-sm sm:text-base lg:text-lg hover:text-red-400 transition-all duration-300 break-all md:break-words decoration-red-500/30 hover:decoration-red-500 underline underline-offset-8"
               >
-                programs@exceedlearningcenterny.com
+                teenprograms@exceedlearningcenterny.com
               </a>
             </div>
           </div>

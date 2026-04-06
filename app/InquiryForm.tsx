@@ -79,7 +79,7 @@ export default function InquiryForm() {
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
                 <Mail className="w-5 h-5 text-[#ca3433]" />
               </div>
-              <span className="font-medium text-sm">programs@exceedlearningcenterny.com</span>
+              <span className="font-medium text-sm">teenprograms@exceedlearningcenterny.com</span>
             </div>
           </div>
         </div>
