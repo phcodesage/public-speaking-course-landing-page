@@ -104,7 +104,7 @@ export async function POST(request: Request) {
     try {
       await resend.emails.send({
         from: "Inquiry System <programs@swe-rech.site>",
-        to: "phcodesage@gmail.com", // Updated admin email for testing
+        to: ["info@exceedlearningcenterny.com", "olga@exceedlearningcenterny.com"],
         subject: `New Inquiry from ${name}`,
         html: `
           <!DOCTYPE html>
