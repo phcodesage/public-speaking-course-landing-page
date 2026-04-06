@@ -1,7 +1,10 @@
 "use client";
 
-import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Zap, Phone, Mail } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Zap, Phone, Mail, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import PageTracker from './PageTracker';
+import Announcement from './Announcement';
+import InquiryForm from './InquiryForm';
 
 interface CrashCourse {
   dates: string;
@@ -28,6 +31,15 @@ interface CourseLevel {
 
 export default function Home() {
   const [selectedImage] = useState<string>('/images/public-speaking.jpg');
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToInquiry = (courseName?: string) => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (courseName) {
+      // We'll handle setting the course in the InquiryForm component itself or via a more React-friendly way
+      // For now, let's keep it simple as the user might want to select it manually
+    }
+  };
 
   const courseLevels: CourseLevel[] = [
     {
@@ -89,6 +101,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      <PageTracker />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Centered Logo */}
         <header className="pt-8 pb-6">
@@ -118,6 +131,8 @@ export default function Home() {
               <Video className="w-5 h-5" style={{ color: '#0e1f3e' }} />
             </div>
           </div>
+
+          <Announcement />
 
           {/* Hero Section */}
           <div className="rounded-3xl shadow-2xl overflow-hidden mb-12" style={{ backgroundColor: '#fbeceb' }}>
@@ -431,11 +446,12 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="#enroll"
+                  href="#inquiry"
+                  onClick={(e) => { e.preventDefault(); scrollToInquiry(); }}
                   className="inline-block px-10 py-4 rounded-full font-bold text-white text-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
                   style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
                 >
-                  Inquire & Enroll
+                  Inquire &amp; Enroll
                 </a>
               </div>
             </div>
@@ -467,6 +483,11 @@ export default function Home() {
               </div>
             </div>
             
+          </div>
+
+          {/* ── INQUIRY FORM Section ── */}
+          <div ref={formRef} id="inquiry" className="scroll-mt-20 mb-20">
+            <InquiryForm />
           </div>
 
           {/* ── 2-Column Grid: Videos ── */}
@@ -512,6 +533,7 @@ export default function Home() {
             </div>
             
           </div>
+
         </main>
       </div>
 

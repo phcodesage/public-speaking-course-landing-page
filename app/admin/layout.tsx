@@ -1,9 +1,9 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { Crown, LogOut, LayoutDashboard, Users, BookOpen } from "lucide-react";
+import { Crown } from "lucide-react";
 import LogoutButton from "./LogoutButton";
+import AdminNav from "./AdminNav";
 
 export default async function AdminLayout({
   children,
@@ -29,20 +29,7 @@ export default async function AdminLayout({
           </div>
         </div>
 
-        <nav className="flex-1 px-4 py-8 space-y-2">
-          <Link href="/admin" className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors">
-            <LayoutDashboard className="w-5 h-5" />
-            Dashboard
-          </Link>
-          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 font-medium hover:bg-white/10 hover:text-white transition-colors cursor-not-allowed opacity-60">
-            <Users className="w-5 h-5" />
-            Inquiries
-          </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 font-medium hover:bg-white/10 hover:text-white transition-colors cursor-not-allowed opacity-60">
-            <BookOpen className="w-5 h-5" />
-            Courses
-          </button>
-        </nav>
+        <AdminNav />
 
         <div className="p-4 border-t border-white/10">
           <p className="text-xs text-gray-400 text-center mb-4">Logged in as {session.user?.name}</p>
