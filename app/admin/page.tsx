@@ -1,4 +1,4 @@
-import { Crown, Eye, Users, MessageSquare, TrendingUp } from "lucide-react";
+import { Crown, Eye, Users, MessageSquare, TrendingUp, GraduationCap, Clock } from "lucide-react";
 import clientPromise from "@/lib/mongodb";
 import Link from "next/link";
 
@@ -9,12 +9,14 @@ async function getStats() {
     const today = new Date().toISOString().split("T")[0];
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
-    const [totalVisits, todayVisits, totalInquiries, unreadInquiries, visitsByDay] =
+    const [totalVisits, todayVisits, totalInquiries, unreadInquiries, totalRegistrations, pendingRegistrations, visitsByDay] =
       await Promise.all([
         db.collection("pageVisits").countDocuments(),
         db.collection("pageVisits").countDocuments({ date: today }),
         db.collection("inquiries").countDocuments(),
         db.collection("inquiries").countDocuments({ read: false }),
+        db.collection("registrations").countDocuments(),
+        db.collection("registrations").countDocuments({ paymentStatus: "pending" }),
         db
           .collection("pageVisits")
           .aggregate([
@@ -25,13 +27,15 @@ async function getStats() {
           .toArray(),
       ]);
 
-    return { totalVisits, todayVisits, totalInquiries, unreadInquiries, visitsByDay };
+    return { totalVisits, todayVisits, totalInquiries, unreadInquiries, totalRegistrations, pendingRegistrations, visitsByDay };
   } catch {
     return {
       totalVisits: 0,
       todayVisits: 0,
       totalInquiries: 0,
       unreadInquiries: 0,
+      totalRegistrations: 0,
+      pendingRegistrations: 0,
       visitsByDay: [],
     };
   }
@@ -130,7 +134,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <StatCard
           title="Total Page Visits"
           value={stats.totalVisits}
@@ -155,6 +159,19 @@ export default async function AdminDashboard() {
           accent={stats.unreadInquiries > 0}
           href="/admin/inquiries"
         />
+        <StatCard
+          title="Total Registrations"
+          value={stats.totalRegistrations}
+          icon={<GraduationCap className="w-5 h-5 text-[#0e1f3e]" />}
+          href="/admin/registrations"
+        />
+        <StatCard
+          title="Pending Payments"
+          value={stats.pendingRegistrations}
+          icon={<Clock className="w-5 h-5 text-[#ca3433]" />}
+          accent={stats.pendingRegistrations > 0}
+          href="/admin/registrations"
+        />
       </div>
 
       {/* Visits Chart */}
@@ -173,7 +190,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Quick links */}
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-3 gap-4">
         <Link
           href="/admin/inquiries"
           className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#ca3433]/20 transition-all group"
@@ -193,6 +210,29 @@ export default async function AdminDashboard() {
                 {stats.unreadInquiries > 0
                   ? `${stats.unreadInquiries} unread message${stats.unreadInquiries > 1 ? "s" : ""}`
                   : "All caught up!"}
+              </p>
+            </div>
+          </div>
+        </Link>
+        <Link
+          href="/admin/registrations"
+          className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#ca3433]/20 transition-all group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-[#fcf8f8] flex items-center justify-center border border-[#ca3433]/20">
+              <GraduationCap className="w-6 h-6 text-[#ca3433]" />
+            </div>
+            <div>
+              <h4
+                className="font-bold text-[#0e1f3e] group-hover:text-[#ca3433] transition-colors"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                View Registrations
+              </h4>
+              <p className="text-sm text-gray-500">
+                {stats.pendingRegistrations > 0
+                  ? `${stats.pendingRegistrations} pending payment${stats.pendingRegistrations > 1 ? "s" : ""}`
+                  : `${stats.totalRegistrations} total registration${stats.totalRegistrations !== 1 ? "s" : ""}`}
               </p>
             </div>
           </div>

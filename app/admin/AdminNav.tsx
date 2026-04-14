@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, FileEdit } from "lucide-react";
+import { LayoutDashboard, Users, FileEdit, GraduationCap } from "lucide-react";
 
 const links = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/inquiries", icon: Users, label: "Inquiries" },
+  { href: "/admin/registrations", icon: GraduationCap, label: "Registrations" },
   { href: "/admin/editor", icon: FileEdit, label: "Page Editor" },
 ];
 

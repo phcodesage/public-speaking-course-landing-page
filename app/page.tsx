@@ -5,6 +5,7 @@ import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Z
 import PageTracker from './PageTracker';
 import Announcement from './Announcement';
 import InquiryForm from './InquiryForm';
+import RegistrationModal from './RegistrationModal';
 
 interface CrashCourse {
   dates: string;
@@ -32,6 +33,8 @@ interface CourseLevel {
 export default function Home() {
   const [selectedImage] = useState<string>('/images/public-speaking.jpg');
   const formRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSchedule, setSelectedSchedule] = useState("level-1-regular");
 
   const scrollToInquiry = (courseName?: string) => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -202,15 +205,13 @@ export default function Home() {
                         <p className="text-[13px] text-gray-500 leading-tight mt-1">Save $117 when you enroll in all levels</p>
                       </div>
                     </div>
-                    <a
-                      href="https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm"
+                    <button
+                      onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
+                      className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer"
                       style={{ backgroundColor: '#ca3433', fontFamily: 'Montserrat, sans-serif' }}
                     >
                       Enroll in All 3 Levels - $1,200
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -290,15 +291,13 @@ export default function Home() {
                           </p>
                         </div>
                       </div>
-                      <a
-                        href={course.crashCourse.stripeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90"
+                      <button
+                        onClick={() => { setSelectedSchedule(`level-${index + 1}-crash`); setIsModalOpen(true); }}
+                        className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90 appearance-none border-none cursor-pointer"
                         style={{ backgroundColor: course.color }}
                       >
                         Enroll in Crash Course
-                      </a>
+                      </button>
                     </>
                   ) : (
                     <div className="py-2 text-center">
@@ -389,15 +388,13 @@ export default function Home() {
                   </div>
 
                   {course.showDate ? (
-                    <a
-                      href={course.stripeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90"
+                    <button
+                      onClick={() => { setSelectedSchedule(`level-${index + 1}-regular`); setIsModalOpen(true); }}
+                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 appearance-none border-none cursor-pointer"
                       style={{ backgroundColor: course.color }}
                     >
                       Enroll Now
-                    </a>
+                    </button>
                   ) : (
                     <div
                       className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
@@ -460,14 +457,12 @@ export default function Home() {
             <div className="mt-8 lg:mt-0 flex flex-col justify-center">
               <div className="rounded-3xl bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl h-full flex flex-col justify-center transition-all duration-300 hover:shadow-2xl p-1 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine z-0"></div>
-                <a
-                  href="https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 flex flex-col items-center justify-center w-full h-full px-8 py-12 rounded-[22px] font-bold text-white text-center"
+                <button
+                  onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
+                  className="relative z-10 flex flex-col items-center justify-center w-full h-full px-8 py-12 rounded-[22px] font-bold text-white text-center appearance-none border-none cursor-pointer"
                   style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
                 >
-                  <Crown className="w-16 h-16 text-yellow-400 mb-6 drop-shadow-lg" />
+                  <Crown className="w-16 h-16 text-yellow-400 mb-6 drop-shadow-lg mx-auto" />
                   <h3 className="text-3xl md:text-4xl lg:text-3xl xl:text-4xl mb-4 leading-tight">
                     Avail All 3 Courses
                   </h3>
@@ -479,7 +474,7 @@ export default function Home() {
                       Save $117 when you enroll in all 3 levels
                     </p>
                   </div>
-                </a>
+                </button>
               </div>
             </div>
             
@@ -533,7 +528,11 @@ export default function Home() {
             </div>
             
           </div>
-
+          <RegistrationModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+            defaultSchedule={selectedSchedule} 
+          />
         </main>
       </div>
 
