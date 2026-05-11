@@ -57,7 +57,7 @@ export default function Home() {
       dates: 'April 12, 2026',
       time: '12:00 PM – 2:00 PM',
       crashCourse: {
-        dates: 'June 1, 2026',
+        dates: 'June 7, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -93,7 +93,7 @@ export default function Home() {
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: false,
       crashCourse: {
-        dates: 'June 28, 2026',
+        dates: 'June 21, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
