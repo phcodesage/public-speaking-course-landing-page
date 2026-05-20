@@ -143,7 +143,7 @@ export default function PaymentModal({
               >
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: "#0e1f3e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 22 }}>💳</div>
                 <div>
-                  <p style={{ fontWeight: 700, color: "#1a1a1a", margin: "0 0 4px 0", fontSize: 15 }}>Pay by Card (Stripe)</p>
+                  <p style={{ fontWeight: 700, color: "#1a1a1a", margin: "0 0 4px 0", fontSize: 15 }}>Pay by Card (Valor Pay)</p>
                   <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>
                     <strong style={{ color: "#ca3433" }}>{cardPrice}</strong>{" "}
                     <span style={{ color: "#9ca3af" }}>(includes 4% processing fee)</span>
