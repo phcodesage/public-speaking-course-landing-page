@@ -49,15 +49,15 @@ export default function Home() {
       title: 'Level 1',
       level: 'Public Speaking',
       icon: <Award className="w-8 h-8 text-white" />,
-      description: 'Focuses on building foundational confidence and a grounded stage presence.',
+      description: 'Finding Your Voice — overcoming anxiety, body language, and the basics of confident delivery.',
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'April 12, 2026',
+      dates: 'June 1, 2026',
       time: '12:00 PM – 2:00 PM',
       crashCourse: {
-        dates: 'June 7, 2026',
+        dates: 'June 1, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -68,12 +68,12 @@ export default function Home() {
       title: 'Level 2',
       level: 'Public Speaking',
       icon: <TrendingUp className="w-8 h-8 text-white" />,
-      description: 'Mastery of storytelling, audience engagement, and persuasive speaking.',
+      description: 'Mastering the Message — structuring impactful speeches and connecting deeply with any audience.',
       color: '#ca3433',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'April 12, 2026',
+      dates: 'June 14, 2026',
       time: '2:30 PM – 4:30 PM',
       crashCourse: {
         dates: 'June 14, 2026',
@@ -87,13 +87,15 @@ export default function Home() {
       title: 'Level 3',
       level: 'Public Speaking',
       icon: <Crown className="w-8 h-8 text-white" />,
-      description: 'Achieve mastery in public speaking. Command any room with executive presence and professional polish.',
+      description: 'The Persuasive Leader — advanced storytelling, debate skills, and inspiring action through words.',
       color: '#0e1f3e',
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
-      showDate: false,
+      showDate: true,
+      dates: 'June 28, 2026',
+      time: '2:00 PM – 5:00 PM',
       crashCourse: {
-        dates: 'June 21, 2026',
+        dates: 'June 28, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -418,28 +420,33 @@ export default function Home() {
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
-                  Public Speaking Summer Course
+                  Summer Intensive Schedule
                 </h3>
                 <p className="text-xl font-semibold mb-6" style={{ color: '#ca3433' }}>
-                  FULL COURSE PROGRAMS FOR TEENS ONLY
+                  Public Speaking Intensive — Limited seats per level
                 </p>
-                
-                <div className="flex flex-col xl:flex-row items-center justify-center gap-6 xl:gap-8 mb-8">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-6 h-6 flex-shrink-0" style={{ color: '#ca3433' }} />
-                    <div className="text-left">
-                      <p className="font-semibold text-base sm:text-lg" style={{ color: '#0e1f3e' }}>Starts June 30</p>
-                      <p className="text-sm sm:text-base text-gray-600">Tue & Thu (8 Weeks)</p>
-                      <p className="text-sm sm:text-base text-gray-600">Ends August 20</p>
-                    </div>
+
+                <div className="space-y-5 mb-8 text-left">
+                  <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 1: Finding Your Voice</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 1</p>
+                    <p className="text-sm text-gray-600">Focus: Overcoming anxiety, body language, and the basics of confident delivery.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-6 h-6 flex-shrink-0" style={{ color: '#ca3433' }} />
-                    <div className="text-left">
-                      <p className="font-semibold text-base sm:text-lg" style={{ color: '#0e1f3e' }}>Time</p>
-                      <p className="text-sm sm:text-base text-gray-600">3:00 PM – 5:00 PM</p>
-                    </div>
+                  <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 2: Mastering the Message</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 14</p>
+                    <p className="text-sm text-gray-600">Focus: Structuring impactful speeches and connecting deeply with any audience.</p>
                   </div>
+                  <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 3: The Persuasive Leader</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 28</p>
+                    <p className="text-sm text-gray-600">Focus: Advanced storytelling, debate skills, and inspiring action through words.</p>
+                  </div>
+                </div>
+
+                <div className="text-sm text-gray-500 mb-8">
+                  <p>📍 Exceed Learning Center</p>
+                  <p className="mt-2">DM us to secure a spot — limited seats per level!</p>
                 </div>
 
                 <a
