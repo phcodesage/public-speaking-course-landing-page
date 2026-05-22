@@ -54,10 +54,10 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'June 1, 2026',
+      dates: 'June 7, 2026',
       time: '12:00 PM – 2:00 PM',
       crashCourse: {
-        dates: 'June 1, 2026',
+        dates: 'June 7, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -92,10 +92,10 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'June 28, 2026',
+      dates: 'June 21, 2026',
       time: '2:00 PM – 5:00 PM',
       crashCourse: {
-        dates: 'June 28, 2026',
+        dates: 'June 21, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -429,7 +429,7 @@ export default function Home() {
                 <div className="space-y-5 mb-8 text-left">
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 1: Finding Your Voice</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 1</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 7</p>
                     <p className="text-sm text-gray-600">Focus: Overcoming anxiety, body language, and the basics of confident delivery.</p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
@@ -439,7 +439,7 @@ export default function Home() {
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 3: The Persuasive Leader</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 28</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 21</p>
                     <p className="text-sm text-gray-600">Focus: Advanced storytelling, debate skills, and inspiring action through words.</p>
                   </div>
                 </div>
