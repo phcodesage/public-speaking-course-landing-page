@@ -82,11 +82,12 @@ export default function PaymentModal({
           borderRadius: "1.5rem",
           boxShadow: "0 25px 80px rgba(0,0,0,0.25)",
           width: "100%",
-          maxWidth: "460px",
+          maxWidth: step === "zelle" ? "850px" : "460px",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
           maxHeight: "90vh",
+          transition: "max-width 0.3s ease",
         }}
         onClick={(e) => e.stopPropagation()}
       >
