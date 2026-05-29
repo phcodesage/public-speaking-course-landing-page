@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from 'react';
-import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Zap, Phone, Mail, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, DollarSign, Award, TrendingUp, Crown, MapPin, Video, Zap, Phone, Mail, Send, Loader2, CheckCircle2, Globe } from 'lucide-react';
 import PageTracker from './PageTracker';
 import Announcement from './Announcement';
 import InquiryForm from './InquiryForm';
@@ -570,19 +570,21 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Email */}
+            {/* Website */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left group">
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e63e3d] shadow-lg shadow-black/20" style={{ backgroundColor: '#cf3736', border: '2px solid rgba(255,255,255,0.1)' }}>
-                  <Mail className="w-5 h-5 text-white" />
+                  <Globe className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email Us</h4>
+                <h4 className="text-gray-400 font-bold tracking-widest text-[10px] uppercase pt-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Website</h4>
               </div>
               <a 
-                href="mailto:programs@exceedlearningcenterny.com" 
+                href="https://www.exceedlearningcenterny.com" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white font-bold text-sm sm:text-base lg:text-lg hover:text-red-400 transition-all duration-300 break-all md:break-words decoration-red-500/30 hover:decoration-red-500 underline underline-offset-8"
               >
-                programs@exceedlearningcenterny.com
+                www.exceedlearningcenterny.com
               </a>
             </div>
           </div>
