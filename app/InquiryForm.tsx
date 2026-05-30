@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, CheckCircle2, Loader2, Phone, Mail } from "lucide-react";
 
-export default function InquiryForm() {
+interface InquiryFormProps {
+  initialCourse?: string;
+}
+
+export default function InquiryForm({ initialCourse }: InquiryFormProps) {
   const [form, setForm] = useState({ 
     name: "", 
     email: "", 
@@ -14,6 +18,13 @@ export default function InquiryForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  // Sync form course when initialCourse changes
+  useEffect(() => {
+    if (initialCourse) {
+      setForm((f) => ({ ...f, course: initialCourse }));
+    }
+  }, [initialCourse]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -139,10 +150,11 @@ export default function InquiryForm() {
                 <option value="General Inquiry">General Inquiry</option>
                 <option value="Level 1 Regular">Level 1 - Regular Course</option>
                 <option value="Level 2 Regular">Level 2 - Regular Course</option>
+                <option value="Level 3 Regular">Level 3 - Regular Course</option>
                 <option value="Level 1 Crash">Level 1 - Crash Course</option>
                 <option value="Level 2 Crash">Level 2 - Crash Course</option>
                 <option value="Level 3 Crash">Level 3 - Crash Course</option>
-                <option value="Summer Course">Summer Course (Programs)</option>
+                <option value="Summer Public Speaking">Summer Public Speaking Program</option>
               </select>
             </div>
           </div>

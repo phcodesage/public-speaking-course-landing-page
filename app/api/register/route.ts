@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Course schedule names for display
 const COURSE_SCHEDULES: Record<string, string> = {
   "level-1-regular": "Level 1 - Regular Course ($439)",
@@ -20,6 +18,7 @@ function getCourseName(scheduleId: string): string {
 }
 
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY || "dummy-key");
   try {
     const { name, email, phone, schedule } = await request.json();
 

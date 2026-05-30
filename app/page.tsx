@@ -35,13 +35,13 @@ export default function Home() {
   const formRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSchedule, setSelectedSchedule] = useState("level-1-regular");
+  const [inquiryCourse, setInquiryCourse] = useState("General Inquiry");
 
   const scrollToInquiry = (courseName?: string) => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth' });
     if (courseName) {
-      // We'll handle setting the course in the InquiryForm component itself or via a more React-friendly way
-      // For now, let's keep it simple as the user might want to select it manually
+      setInquiryCourse(courseName);
     }
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const courseLevels: CourseLevel[] = [
@@ -54,10 +54,9 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'June 7, 2026',
-      time: '12:00 PM – 2:00 PM',
+      dates: 'September (TBD)',
       crashCourse: {
-        dates: 'June 7, 2026',
+        dates: 'June 14, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -73,10 +72,9 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'June 14, 2026',
-      time: '2:30 PM – 4:30 PM',
+      dates: 'September (TBD)',
       crashCourse: {
-        dates: 'June 14, 2026',
+        dates: 'June 21, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -92,10 +90,9 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'June 21, 2026',
-      time: '2:00 PM – 5:00 PM',
+      dates: 'September (TBD)',
       crashCourse: {
-        dates: 'June 21, 2026',
+        dates: 'June 28, 2026',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
@@ -410,6 +407,98 @@ export default function Home() {
             ))}
           </div>
 
+          {/* ── SUMMER PUBLIC SPEAKING PROGRAM Section ── */}
+          <div className="mb-4">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md bg-gradient-to-r from-[#0e1f3e] to-[#1e345e]">
+                <Calendar className="w-5 h-5 text-white animate-pulse" />
+                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  SUMMER PUBLIC SPEAKING (8-WEEK PROGRAM)
+                </h3>
+                <Calendar className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+            </div>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden shadow-2xl border-2 mb-14 bg-gradient-to-br from-white to-gray-50/50" style={{ borderColor: '#0e1f3e' }}>
+            <div className="lg:grid lg:grid-cols-12 lg:gap-0">
+              {/* Left Side - Details */}
+              <div className="lg:col-span-7 p-8 lg:p-12">
+                <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white" style={{ backgroundColor: '#ca3433' }}>
+                  June 30 – August 28
+                </span>
+                <h3 className="text-3xl lg:text-4xl font-extrabold mt-4 mb-6 text-[#0e1f3e]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Summer Public Speaking Course
+                </h3>
+                <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
+                  Our comprehensive 8-week summer program is designed to help students build lasting confidence, structure powerful arguments, and refine their presentation skills through active practice and personalized guidance.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-6 mb-4">
+                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <Clock className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                    <div>
+                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Course Schedule</h4>
+                      <p className="text-sm text-gray-500">4 hours a week</p>
+                      <p className="text-sm font-semibold text-[#0e1f3e]">Twice a week (8 weeks)</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <Calendar className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                    <div>
+                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Session Times</h4>
+                      <p className="text-sm text-gray-500">Every Tue &amp; Thu</p>
+                      <p className="text-sm font-semibold text-[#0e1f3e]">3:00 PM – 5:00 PM</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <MapPin className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                    <div>
+                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Class Format</h4>
+                      <p className="text-sm text-gray-500">In-Person Classes</p>
+                      <p className="text-sm font-semibold text-[#0e1f3e]">Virtual option available</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <TrendingUp className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                    <div>
+                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Starts &amp; Ends</h4>
+                      <p className="text-sm text-gray-500">Summer Term</p>
+                      <p className="text-sm font-semibold text-[#0e1f3e]">June 30 to Aug 28</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side - Call to Action */}
+              <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center text-center text-white relative" style={{ backgroundColor: '#0e1f3e' }}>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(202,52,51,0.15),transparent_60%)] pointer-events-none"></div>
+                <div className="relative z-10">
+                  <Award className="w-16 h-16 text-[#ca3433] mx-auto mb-6 animate-pulse" />
+                  <h4 className="text-2xl font-extrabold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Secure Your Spot
+                  </h4>
+                  <p className="text-white/80 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
+                    Spaces are limited for the summer term. Inquire today to enroll your student in this intensive 8-week public speaking program.
+                  </p>
+                  
+                  <button
+                    onClick={() => scrollToInquiry("Summer Public Speaking")}
+                    className="w-full px-8 py-4 rounded-full font-bold text-white text-center text-lg transition-all duration-300 hover:scale-[1.03] shadow-lg cursor-pointer bg-[#ca3433] hover:bg-[#b02d2c] border-none"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  >
+                    Inquire &amp; Reserve Spot
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* ── 2-Column Grid: Summer Course & Bundle ── */}
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-12">
             
@@ -429,17 +518,17 @@ export default function Home() {
                 <div className="space-y-5 mb-8 text-left">
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 1: Finding Your Voice</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 7</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 14</p>
                     <p className="text-sm text-gray-600">Focus: Overcoming anxiety, body language, and the basics of confident delivery.</p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 2: Mastering the Message</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 14</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 21</p>
                     <p className="text-sm text-gray-600">Focus: Structuring impactful speeches and connecting deeply with any audience.</p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 3: The Persuasive Leader</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 21</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 June 28</p>
                     <p className="text-sm text-gray-600">Focus: Advanced storytelling, debate skills, and inspiring action through words.</p>
                   </div>
                 </div>
@@ -489,7 +578,7 @@ export default function Home() {
 
           {/* ── INQUIRY FORM Section ── */}
           <div ref={formRef} id="inquiry" className="scroll-mt-20 mb-20">
-            <InquiryForm />
+            <InquiryForm initialCourse={inquiryCourse} />
           </div>
 
           {/* ── 2-Column Grid: Videos ── */}
