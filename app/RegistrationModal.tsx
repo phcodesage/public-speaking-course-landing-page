@@ -109,7 +109,7 @@ export default function RegistrationModal({ isOpen, onClose, defaultSchedule }: 
           <div className="flex items-center gap-3">
             <GraduationCap className="w-6 h-6 text-[#ca3433]" />
             <h2 className="text-xl font-bold text-white tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Student Registration
+              Program Registration
             </h2>
           </div>
           <button 

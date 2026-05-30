@@ -433,7 +433,7 @@ export default function Home() {
                   Summer Public Speaking Course
                 </h3>
                 <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
-                  Our comprehensive 8-week summer program is designed to help students build lasting confidence, structure powerful arguments, and refine their presentation skills through active practice and personalized guidance.
+                  Our comprehensive 8-week summer program is designed to help participants build lasting confidence, structure powerful arguments, and refine their presentation skills through active practice and personalized guidance.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-6 mb-4">
@@ -484,7 +484,7 @@ export default function Home() {
                     Secure Your Spot
                   </h4>
                   <p className="text-white/80 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
-                    Spaces are limited for the summer term. Inquire today to enroll your student in this intensive 8-week public speaking program.
+                    Spaces are limited for the summer term. Inquire today to enroll in this intensive 8-week public speaking program.
                   </p>
                   
                   <button
