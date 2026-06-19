@@ -56,11 +56,11 @@ export default function Home() {
       showDate: true,
       dates: 'September (TBD)',
       crashCourse: {
-        dates: 'June 14, 2026',
+        dates: 'TBD',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
-        showDate: true,
+        showDate: false,
       }
     },
     {
@@ -74,11 +74,11 @@ export default function Home() {
       showDate: true,
       dates: 'September (TBD)',
       crashCourse: {
-        dates: 'June 21, 2026',
+        dates: 'TBD',
         time: '2:00 PM – 5:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
-        showDate: true,
+        showDate: false,
       }
     },
     {
@@ -518,12 +518,12 @@ export default function Home() {
                 <div className="space-y-5 mb-8 text-left">
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 1: Finding Your Voice</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 14</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 TBD</p>
                     <p className="text-sm text-gray-600">Focus: Overcoming anxiety, body language, and the basics of confident delivery.</p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 2: Mastering the Message</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 21</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 TBD</p>
                     <p className="text-sm text-gray-600">Focus: Structuring impactful speeches and connecting deeply with any audience.</p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
