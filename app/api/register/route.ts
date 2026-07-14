@@ -10,7 +10,8 @@ const COURSE_SCHEDULES: Record<string, string> = {
   "level-1-crash": "Level 1 - Crash Course ($139)",
   "level-2-crash": "Level 2 - Crash Course ($139)",
   "level-3-crash": "Level 3 - Crash Course ($139)",
-  "bundle": "All 3 Levels Bundle ($1,200)",
+  "bundle": "All 3 Levels Full Course Bundle ($1,200)",
+  "crash-bundle": "All 3 Levels Crash Course Bundle ($399)",
 };
 
 function getCourseName(scheduleId: string): string {

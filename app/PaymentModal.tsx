@@ -29,6 +29,8 @@ export default function PaymentModal({
 
   if (!isOpen) return null;
 
+  const cardAvailable = stripeLink.trim().length > 0;
+
   function handleClose() {
     setStep("choose");
     setForm({ name: "", phone: "", reference: "" });
@@ -107,18 +109,24 @@ export default function PaymentModal({
             <span style={{ color: "#15803d", fontWeight: 700 }}>{cashPrice}</span>
             <span style={{ color: "#b45309", fontWeight: 400 }}>— no extra fee</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "#92400e", flexWrap: "wrap" }}>
-            <span>💳 Card:</span>
-            <span style={{ color: "#ca3433", fontWeight: 700 }}>{cardPrice}</span>
-            <span style={{ color: "#b45309", fontWeight: 400 }}>— includes 4% processing fee</span>
-          </div>
+          {cardAvailable && (
+            <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "#92400e", flexWrap: "wrap" }}>
+              <span>💳 Card:</span>
+              <span style={{ color: "#ca3433", fontWeight: 700 }}>{cardPrice}</span>
+              <span style={{ color: "#b45309", fontWeight: 400 }}>— includes 4% processing fee</span>
+            </div>
+          )}
         </div>
 
         <div style={{ padding: "24px", overflowY: "auto" }}>
           {/* CHOOSE STEP */}
           {step === "choose" && (
             <div>
-              <p style={{ color: "#64748b", fontSize: 14, marginBottom: 16 }}>Choose your preferred payment method:</p>
+              <p style={{ color: "#64748b", fontSize: 14, marginBottom: 16 }}>
+                {cardAvailable
+                  ? "Choose your preferred payment method:"
+                  : "This option is available by Zelle. Card payment is coming soon."}
+              </p>
 
               {/* Zelle Option */}
               <button
@@ -138,19 +146,21 @@ export default function PaymentModal({
               </button>
 
               {/* Card Option */}
-              <button
-                onClick={handleCardPay}
-                style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px", borderRadius: "16px", border: "2px solid #bfdbfe", background: "#eff6ff", cursor: "pointer", textAlign: "left" }}
-              >
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#0e1f3e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 22 }}>💳</div>
-                <div>
-                  <p style={{ fontWeight: 700, color: "#1a1a1a", margin: "0 0 4px 0", fontSize: 15 }}>Pay by Card (Valor Pay)</p>
-                  <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>
-                    <strong style={{ color: "#ca3433" }}>{cardPrice}</strong>{" "}
-                    <span style={{ color: "#9ca3af" }}>(includes 4% processing fee)</span>
-                  </p>
-                </div>
-              </button>
+              {cardAvailable && (
+                <button
+                  onClick={handleCardPay}
+                  style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px", borderRadius: "16px", border: "2px solid #bfdbfe", background: "#eff6ff", cursor: "pointer", textAlign: "left" }}
+                >
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "#0e1f3e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 22 }}>💳</div>
+                  <div>
+                    <p style={{ fontWeight: 700, color: "#1a1a1a", margin: "0 0 4px 0", fontSize: 15 }}>Pay by Card (Valor Pay)</p>
+                    <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>
+                      <strong style={{ color: "#ca3433" }}>{cardPrice}</strong>{" "}
+                      <span style={{ color: "#9ca3af" }}>(includes 4% processing fee)</span>
+                    </p>
+                  </div>
+                </button>
+              )}
             </div>
           )}
 

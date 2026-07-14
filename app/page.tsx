@@ -36,6 +36,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSchedule, setSelectedSchedule] = useState("level-1-regular");
   const [inquiryCourse, setInquiryCourse] = useState("General Inquiry");
+  const [activeTab, setActiveTab] = useState<'crash' | 'regular' | 'summer'>('crash');
 
   const scrollToInquiry = (courseName?: string) => {
     if (courseName) {
@@ -54,13 +55,13 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'September (TBD)',
+      dates: 'October 4th, 2026',
       crashCourse: {
-        dates: 'TBD',
-        time: '2:00 PM – 5:00 PM',
+        dates: 'September 6, 2026',
+        time: '10:00 AM – 12:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
-        showDate: false,
+        showDate: true,
       }
     },
     {
@@ -72,13 +73,13 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'September (TBD)',
+      dates: 'November 1st, 2026',
       crashCourse: {
-        dates: 'TBD',
-        time: '2:00 PM – 5:00 PM',
+        dates: 'September 6, 2026',
+        time: '12:00 PM – 2:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
-        showDate: false,
+        showDate: true,
       }
     },
     {
@@ -90,10 +91,10 @@ export default function Home() {
       price: '$439',
       stripeLink: 'https://buy.stripe.com/7sY5kwcWw9se6FXfF1dfG04',
       showDate: true,
-      dates: 'September (TBD)',
+      dates: 'December 6th, 2026',
       crashCourse: {
-        dates: 'June 28, 2026',
-        time: '2:00 PM – 5:00 PM',
+        dates: 'September 6, 2026',
+        time: '2:00 PM – 4:00 PM',
         price: '$139',
         stripeLink: 'https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i',
         showDate: true,
@@ -175,347 +176,534 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  {/* Investment */}
-                  <div className="flex items-center gap-4 px-2">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: '#ca3433' }}>
-                      <DollarSign className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-[17px] leading-tight mb-1" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
-                        Investment Per Level
-                      </h4>
-                      <p className="text-2xl font-bold leading-none mb-1" style={{ color: '#ca3433' }}>
-                        $439
-                      </p>
-                      <p className="text-[13px] text-gray-500 leading-none">Per course level</p>
-                    </div>
-                  </div>
+                  {/* Dynamic Pricing / Info based on activeTab */}
+                  {activeTab === 'crash' && (
+                    <>
+                      {/* Investment */}
+                      <div className="flex items-center gap-4 px-2 animate-in fade-in duration-300">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-sm bg-red-600">
+                          <DollarSign className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[17px] leading-tight mb-1" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                            Investment Per Level (Crash Course)
+                          </h4>
+                          <p className="text-2xl font-bold leading-none mb-1 text-red-600">
+                            $139
+                          </p>
+                          <p className="text-[13px] text-gray-500 leading-none">Per course level</p>
+                        </div>
+                      </div>
 
-                  {/* Bundle Offer */}
-                  <div className="p-5 rounded-xl border-[1.5px] border-dashed border-[#ca3433]/70 flex flex-col gap-4 relative" style={{ backgroundColor: 'rgba(202, 52, 51, 0.04)' }}>
-                    <div className="flex items-center gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-[#ffd700]">
-                        <Crown className="w-5 h-5 text-white" />
+                      {/* Bundle Offer */}
+                      <div className="p-5 rounded-xl border-[1.5px] border-dashed border-red-600/70 flex flex-col gap-4 relative animate-in fade-in duration-300" style={{ backgroundColor: 'rgba(239, 68, 68, 0.04)' }}>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-[#ffd700]">
+                            <Crown className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex flex-col">
+                            <h4 className="font-extrabold text-[#0e1f3e] text-sm sm:text-base leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                              🎉 SIGNUP ALL 3 FOR $399!
+                            </h4>
+                            <p className="text-[13px] text-gray-500 leading-tight mt-1">Save $18 when you enroll in all levels</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => { setSelectedSchedule("crash-bundle"); setIsModalOpen(true); }}
+                          className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer bg-red-600"
+                          style={{ fontFamily: 'Montserrat, sans-serif' }}
+                        >
+                          Enroll in All 3 Levels - $399
+                        </button>
                       </div>
-                      <div className="flex flex-col">
-                        <h4 className="font-extrabold text-[#0e1f3e] text-sm sm:text-base leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                          🎉 SIGNUP ALL 3 FOR $1,200!
-                        </h4>
-                        <p className="text-[13px] text-gray-500 leading-tight mt-1">Save $117 when you enroll in all levels</p>
+                    </>
+                  )}
+
+                  {activeTab === 'regular' && (
+                    <>
+                      {/* Investment */}
+                      <div className="flex items-center gap-4 px-2 animate-in fade-in duration-300">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-sm bg-[#0e1f3e]">
+                          <DollarSign className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[17px] leading-tight mb-1" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                            Investment Per Level (Full Course)
+                          </h4>
+                          <p className="text-2xl font-bold leading-none mb-1 text-red-600">
+                            $439
+                          </p>
+                          <p className="text-[13px] text-gray-500 leading-none">Per course level</p>
+                        </div>
                       </div>
-                    </div>
-                    <button
-                      onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
-                      className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer"
-                      style={{ backgroundColor: '#ca3433', fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Enroll in All 3 Levels - $1,200
-                    </button>
-                  </div>
+
+                      {/* Bundle Offer */}
+                      <div className="p-5 rounded-xl border-[1.5px] border-dashed border-[#ca3433]/70 flex flex-col gap-4 relative animate-in fade-in duration-300" style={{ backgroundColor: 'rgba(202, 52, 51, 0.04)' }}>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-[#ffd700]">
+                            <Crown className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex flex-col">
+                            <h4 className="font-extrabold text-[#0e1f3e] text-sm sm:text-base leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                              🎉 SIGNUP ALL 3 FOR $1,200!
+                            </h4>
+                            <p className="text-[13px] text-gray-500 leading-tight mt-1">Save $117 when you enroll in all levels</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
+                          className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer"
+                          style={{ backgroundColor: '#ca3433', fontFamily: 'Montserrat, sans-serif' }}
+                        >
+                          Enroll in All 3 Levels - $1,200
+                        </button>
+                      </div>
+                    </>
+                  )}
+
+                  {activeTab === 'summer' && (
+                    <>
+                      {/* Investment */}
+                      <div className="flex items-center gap-4 px-2 animate-in fade-in duration-300">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-sm bg-amber-500">
+                          <DollarSign className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[17px] leading-tight mb-1" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                            Summer Program (8 Weeks)
+                          </h4>
+                          <p className="text-2xl font-bold leading-none mb-1 text-amber-500">
+                            TBD
+                          </p>
+                          <p className="text-[13px] text-gray-500 leading-none">Next intake: Summer 2027</p>
+                        </div>
+                      </div>
+
+                      {/* Waitlist / Inquiry */}
+                      <div className="p-5 rounded-xl border-[1.5px] border-dashed border-amber-500/70 flex flex-col gap-4 relative animate-in fade-in duration-300" style={{ backgroundColor: 'rgba(245, 158, 11, 0.04)' }}>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-amber-500">
+                            <Calendar className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex flex-col">
+                            <h4 className="font-extrabold text-[#0e1f3e] text-sm sm:text-base leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                              ☀️ SUMMER 2027 WAITLIST
+                            </h4>
+                            <p className="text-[13px] text-gray-500 leading-tight mt-1">Be the first to get scheduled dates &amp; early bird pricing</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => scrollToInquiry("Summer 2027 Course Inquiry")}
+                          className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer bg-amber-500 hover:bg-amber-600"
+                          style={{ fontFamily: 'Montserrat, sans-serif' }}
+                        >
+                          Inquire for Summer 2027
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* ── COURSE FORMAT SELECTOR ── */}
+          <div className="mb-12 text-center">
+            <h3 className="text-2xl font-bold mb-6" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+              Select Course Option
+            </h3>
+            <div className="inline-flex p-1.5 rounded-2xl bg-gray-100 border border-gray-200 shadow-sm max-w-full overflow-x-auto">
+              <button
+                onClick={() => { setActiveTab('crash'); setSelectedSchedule('level-1-crash'); }}
+                className={`px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 whitespace-nowrap cursor-pointer border-none ${
+                  activeTab === 'crash'
+                    ? 'bg-[#ca3433] text-white shadow-md'
+                    : 'text-gray-600 hover:text-[#0e1f3e] hover:bg-gray-200/50'
+                }`}
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                ⚡ Crash Course
+              </button>
+              <button
+                onClick={() => { setActiveTab('regular'); setSelectedSchedule('level-1-regular'); }}
+                className={`px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 whitespace-nowrap cursor-pointer border-none ${
+                  activeTab === 'regular'
+                    ? 'bg-[#0e1f3e] text-white shadow-md'
+                    : 'text-gray-600 hover:text-[#0e1f3e] hover:bg-gray-200/50'
+                }`}
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                🎓 Full Course
+              </button>
+              <button
+                onClick={() => setActiveTab('summer')}
+                className={`px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 whitespace-nowrap cursor-pointer border-none ${
+                  activeTab === 'summer'
+                    ? 'bg-amber-500 text-white shadow-md'
+                    : 'text-gray-600 hover:text-[#0e1f3e] hover:bg-gray-200/50'
+                }`}
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                ☀️ Summer Course
+              </button>
             </div>
           </div>
 
           {/* ── CRASH COURSE Section ── */}
-          <div className="mb-4">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
-              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#ca3433' }}>
-                <Zap className="w-5 h-5 text-white" />
-                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  CRASH COURSE
-                </h3>
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-14">
-            {courseLevels.map((course, index) => (
-              <div
-                key={`crash-${index}`}
-                className="rounded-2xl shadow-lg overflow-hidden border-2 transition-transform duration-300 hover:scale-105"
-                style={{ borderColor: course.color, backgroundColor: '#fff' }}
-              >
-                {/* Crash Course Header */}
-                <div
-                  className="px-5 py-4 flex items-center gap-3"
-                  style={{ backgroundColor: course.color + '15' }}
-                >
-                  <div
-                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: course.color }}
-                  >
+          {activeTab === 'crash' && (
+            <div className="animate-in fade-in duration-300">
+              <div className="mb-4">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
+                  <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#ca3433' }}>
+                    <Zap className="w-5 h-5 text-white" />
+                    <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      CRASH COURSE
+                    </h3>
                     <Zap className="w-5 h-5 text-white" />
                   </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest" style={{ color: course.color }}>
-                      {course.title}
-                    </p>
-                    <h5 className="text-base font-bold" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
-                      CRASH COURSE
-                    </h5>
-                  </div>
-                  <div className="ml-auto">
-                    <span
-                      className="text-lg font-extrabold"
-                      style={{ color: course.color }}
-                    >
-                      {course.crashCourse.price}
-                    </span>
-                  </div>
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#ca3433', opacity: 0.3 }}></div>
                 </div>
+              </div>
 
-                {/* Crash Course Body */}
-                <div className="px-5 py-4 space-y-3">
-                  {course.crashCourse.showDate ? (
-                    <>
-                      <div className="flex items-center gap-3">
-                        <Calendar className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
-                        <div>
-                          <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Date</p>
-                          <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
-                            {course.crashCourse.dates}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
-                        <div>
-                          <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Time</p>
-                          <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
-                            {course.crashCourse.time}
-                          </p>
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => { setSelectedSchedule(`level-${index + 1}-crash`); setIsModalOpen(true); }}
-                        className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90 appearance-none border-none cursor-pointer"
+              <div className="grid md:grid-cols-3 gap-8 mb-10">
+                {courseLevels.map((course, index) => (
+                  <div
+                    key={`crash-${index}`}
+                    className="rounded-2xl shadow-lg overflow-hidden border-2 transition-transform duration-300 hover:scale-105"
+                    style={{ borderColor: course.color, backgroundColor: '#fff' }}
+                  >
+                    {/* Crash Course Header */}
+                    <div
+                      className="px-5 py-4 flex items-center gap-3"
+                      style={{ backgroundColor: course.color + '15' }}
+                    >
+                      <div
+                        className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
                         style={{ backgroundColor: course.color }}
                       >
-                        Enroll in Crash Course
-                      </button>
-                    </>
-                  ) : (
-                    <div className="py-2 text-center">
-                      <p className="text-sm text-gray-500 italic">Date coming soon — stay tuned!</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ── PUBLIC SPEAKING CLASSES Section ── */}
-          <div className="mb-4">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
-              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#0e1f3e' }}>
-                <Award className="w-5 h-5 text-white" />
-                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  PUBLIC SPEAKING CLASSES
-                </h3>
-                <Award className="w-5 h-5 text-white" />
-              </div>
-              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {courseLevels.map((course, index) => (
-              <div key={`regular-${index}`} className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105" style={{ backgroundColor: '#fff' }}>
-                {/* Card Header */}
-                <div
-                  className="px-6 py-8 text-center"
-                  style={{ backgroundColor: course.color }}
-                >
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
-                    {course.icon}
-                  </div>
-                  <h4 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
-                  <p className="text-white/80 text-base">{course.level}</p>
-                </div>
-
-                {/* Card Body */}
-                <div className="px-6 py-8">
-                  <p className="text-gray-600 mb-6 text-lg">
-                    {course.description}
-                  </p>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-start gap-3">
-                      <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                        <Zap className="w-5 h-5 text-white" />
+                      </div>
                       <div>
-                        <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
-                        <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
+                        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: course.color }}>
+                          {course.title}
+                        </p>
+                        <h5 className="text-base font-bold" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                          CRASH COURSE
+                        </h5>
+                      </div>
+                      <div className="ml-auto">
+                        <span
+                          className="text-lg font-extrabold"
+                          style={{ color: course.color }}
+                        >
+                          {course.crashCourse.price}
+                        </span>
                       </div>
                     </div>
 
-                    {course.showDate && course.dates ? (
-                      <>
-                        {course.schedule ? (
-                          <div className="flex items-start gap-3">
-                            <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                    {/* Crash Course Body */}
+                    <div className="px-5 py-4 space-y-3">
+                      {course.crashCourse.showDate ? (
+                        <>
+                          <div className="flex items-center gap-3">
+                            <Calendar className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
                             <div>
-                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
-                              <p className="text-sm text-gray-600">{course.schedule}</p>
+                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Date</p>
+                              <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                                {course.crashCourse.dates}
+                              </p>
                             </div>
                           </div>
-                        ) : null}
-
-                        <div className="flex items-start gap-3">
-                          <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                          <div>
-                            <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Dates</p>
-                            <p className="text-sm text-gray-600">{course.dates}</p>
+                          <div className="flex items-center gap-3">
+                            <Clock className="w-5 h-5 flex-shrink-0" style={{ color: course.color }} />
+                            <div>
+                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Time</p>
+                              <p className="font-semibold text-sm" style={{ color: '#0e1f3e' }}>
+                                {course.crashCourse.time}
+                              </p>
+                            </div>
                           </div>
+                          <button
+                            onClick={() => { setSelectedSchedule(`level-${index + 1}-crash`); setIsModalOpen(true); }}
+                            className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90 appearance-none border-none cursor-pointer"
+                            style={{ backgroundColor: course.color }}
+                          >
+                            Enroll in Crash Course
+                          </button>
+                        </>
+                      ) : (
+                        <div className="py-2 text-center">
+                          <p className="text-sm text-gray-500 italic">Date coming soon — stay tuned!</p>
                         </div>
-
-                        {course.time ? (
-                          <div className="flex items-start gap-3">
-                            <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
-                            <div>
-                              <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
-                              <p className="text-sm text-gray-600">{course.time}</p>
-                            </div>
-                          </div>
-                        ) : null}
-                      </>
-                    ) : null}
-                  </div>
-
-                  {course.showDate ? (
-                    <button
-                      onClick={() => { setSelectedSchedule(`level-${index + 1}-regular`); setIsModalOpen(true); }}
-                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 appearance-none border-none cursor-pointer"
-                      style={{ backgroundColor: course.color }}
-                    >
-                      Enroll Now
-                    </button>
-                  ) : (
-                    <div
-                      className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
-                      style={{ backgroundColor: course.color }}
-                    >
-                      Coming Soon
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ── SUMMER PUBLIC SPEAKING PROGRAM Section ── */}
-          <div className="mb-4">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
-              <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md bg-gradient-to-r from-[#0e1f3e] to-[#1e345e]">
-                <Calendar className="w-5 h-5 text-white animate-pulse" />
-                <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  SUMMER PUBLIC SPEAKING (8-WEEK PROGRAM)
-                </h3>
-                <Calendar className="w-5 h-5 text-white" />
-              </div>
-              <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
-            </div>
-          </div>
-
-          <div className="rounded-3xl overflow-hidden shadow-2xl border-2 mb-14 bg-gradient-to-br from-white to-gray-50/50" style={{ borderColor: '#0e1f3e' }}>
-            <div className="lg:grid lg:grid-cols-12 lg:gap-0">
-              {/* Left Side - Details */}
-              <div className="lg:col-span-7 p-8 lg:p-12">
-                <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white" style={{ backgroundColor: '#ca3433' }}>
-                  June 30 – August 28
-                </span>
-                <h3 className="text-3xl lg:text-4xl font-extrabold mt-4 mb-6 text-[#0e1f3e]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Summer Public Speaking Course
-                </h3>
-                <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
-                  Our comprehensive 8-week summer program is designed to help participants build lasting confidence, structure powerful arguments, and refine their presentation skills through active practice and personalized guidance.
-                </p>
-
-                <div className="grid sm:grid-cols-2 gap-6 mb-4">
-                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                    <Clock className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
-                    <div>
-                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Course Schedule</h4>
-                      <p className="text-sm text-gray-500">4 hours a week</p>
-                      <p className="text-sm font-semibold text-[#0e1f3e]">Twice a week (8 weeks)</p>
+                      )}
                     </div>
                   </div>
-
-                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                    <Calendar className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
-                    <div>
-                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Session Times</h4>
-                      <p className="text-sm text-gray-500">Every Tue &amp; Thu</p>
-                      <p className="text-sm font-semibold text-[#0e1f3e]">3:00 PM – 5:00 PM</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                    <MapPin className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
-                    <div>
-                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Class Format</h4>
-                      <p className="text-sm text-gray-500">In-Person Classes</p>
-                      <p className="text-sm font-semibold text-[#0e1f3e]">Virtual option available</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                    <TrendingUp className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
-                    <div>
-                      <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Starts &amp; Ends</h4>
-                      <p className="text-sm text-gray-500">Summer Term</p>
-                      <p className="text-sm font-semibold text-[#0e1f3e]">June 30 to Aug 28</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Right Side - Call to Action */}
-              <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center text-center text-white relative" style={{ backgroundColor: '#0e1f3e' }}>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(202,52,51,0.15),transparent_60%)] pointer-events-none"></div>
-                <div className="relative z-10">
-                  <Award className="w-16 h-16 text-[#ca3433] mx-auto mb-6 animate-pulse" />
-                  <h4 className="text-2xl font-extrabold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Secure Your Spot
-                  </h4>
-                  <p className="text-white/80 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
-                    Spaces are limited for the summer term. Inquire today to enroll in this intensive 8-week public speaking program.
-                  </p>
-                  
+              {/* Crash Course Bundle Offer Card */}
+              <div className="max-w-xl mx-auto mb-14">
+                <div className="rounded-3xl bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl p-1 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine z-0"></div>
                   <button
-                    onClick={() => scrollToInquiry("Summer Public Speaking")}
-                    className="w-full px-8 py-4 rounded-full font-bold text-white text-center text-lg transition-all duration-300 hover:scale-[1.03] shadow-lg cursor-pointer bg-[#ca3433] hover:bg-[#b02d2c] border-none"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    onClick={() => { setSelectedSchedule("crash-bundle"); setIsModalOpen(true); }}
+                    className="relative z-10 flex flex-col items-center justify-center w-full px-8 py-10 rounded-[22px] font-bold text-white text-center appearance-none border-none cursor-pointer"
+                    style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
                   >
-                    Inquire &amp; Reserve Spot
+                    <Crown className="w-12 h-12 text-yellow-400 mb-4 drop-shadow-lg mx-auto" />
+                    <h3 className="text-2xl md:text-3xl mb-2 leading-tight">
+                      Enroll in All 3 Crash Course Levels
+                    </h3>
+                    <div className="text-4xl text-yellow-400 drop-shadow-md mb-4">
+                      $399
+                    </div>
+                    <div className="inline-block px-6 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/10">
+                      <p className="text-sm font-medium text-gray-200 font-sans tracking-wide">
+                        Save $18 when you enroll in all 3 crash levels!
+                      </p>
+                    </div>
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          )}
 
-          {/* ── 2-Column Grid: Summer Course & Bundle ── */}
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-12">
-            
-            {/* Summer Course Section */}
-            <div className="rounded-3xl overflow-hidden shadow-xl border-2 h-full flex flex-col" style={{ borderColor: '#ca3433', backgroundColor: '#fcf8f8' }}>
-              <div className="px-8 py-10 lg:px-12 text-center flex-1 flex flex-col justify-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto" style={{ backgroundColor: '#ca3433' }}>
+          {/* ── REGULAR/FULL COURSE Section ── */}
+          {activeTab === 'regular' && (
+            <div className="animate-in fade-in duration-300">
+              <div className="mb-4">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+                  <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md" style={{ backgroundColor: '#0e1f3e' }}>
+                    <Award className="w-5 h-5 text-white" />
+                    <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      PUBLIC SPEAKING CLASSES (FULL COURSE)
+                    </h3>
+                    <Award className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                {courseLevels.map((course, index) => (
+                  <div key={`regular-${index}`} className="rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105" style={{ backgroundColor: '#fff' }}>
+                    {/* Card Header */}
+                    <div
+                      className="px-6 py-8 text-center"
+                      style={{ backgroundColor: course.color }}
+                    >
+                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-4">
+                        {course.icon}
+                      </div>
+                      <h4 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{course.title}</h4>
+                      <p className="text-white/80 text-base">{course.level}</p>
+                    </div>
+
+                    {/* Card Body */}
+                    <div className="px-6 py-8">
+                      <p className="text-gray-600 mb-6 text-lg">
+                        {course.description}
+                      </p>
+
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-start gap-3">
+                          <DollarSign className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                          <div>
+                            <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Investment</p>
+                            <p className="font-bold text-xl" style={{ color: '#ca3433' }}>{course.price}</p>
+                          </div>
+                        </div>
+
+                        {course.showDate && course.dates ? (
+                          <>
+                            {course.schedule ? (
+                              <div className="flex items-start gap-3">
+                                <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                                <div>
+                                  <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Schedule</p>
+                                  <p className="text-sm text-gray-600">{course.schedule}</p>
+                                </div>
+                              </div>
+                            ) : null}
+
+                            <div className="flex items-start gap-3">
+                              <Calendar className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                              <div>
+                                <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Dates</p>
+                                <p className="text-sm text-gray-600">{course.dates}</p>
+                              </div>
+                            </div>
+
+                            {course.time ? (
+                              <div className="flex items-start gap-3">
+                                <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: course.color }} />
+                                <div>
+                                  <p className="font-semibold text-base" style={{ color: '#0e1f3e' }}>Time</p>
+                                  <p className="text-sm text-gray-600">{course.time}</p>
+                                </div>
+                              </div>
+                            ) : null}
+                          </>
+                        ) : null}
+                      </div>
+
+                      {course.showDate ? (
+                        <button
+                          onClick={() => { setSelectedSchedule(`level-${index + 1}-regular`); setIsModalOpen(true); }}
+                          className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 appearance-none border-none cursor-pointer"
+                          style={{ backgroundColor: course.color }}
+                        >
+                          Enroll Now
+                        </button>
+                      ) : (
+                        <div
+                          className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg cursor-not-allowed opacity-70"
+                          style={{ backgroundColor: course.color }}
+                        >
+                          Coming Soon
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Regular Bundle Card */}
+              <div className="max-w-xl mx-auto mb-14">
+                <div className="rounded-3xl bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl p-1 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine z-0"></div>
+                  <button
+                    onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
+                    className="relative z-10 flex flex-col items-center justify-center w-full px-8 py-10 rounded-[22px] font-bold text-white text-center appearance-none border-none cursor-pointer"
+                    style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
+                  >
+                    <Crown className="w-12 h-12 text-yellow-400 mb-4 drop-shadow-lg mx-auto" />
+                    <h3 className="text-2xl md:text-3xl mb-2 leading-tight">
+                      Enroll in All 3 Full Course Levels
+                    </h3>
+                    <div className="text-4xl text-yellow-400 drop-shadow-md mb-4">
+                      $1,200
+                    </div>
+                    <div className="inline-block px-6 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/10">
+                      <p className="text-sm font-medium text-gray-200 font-sans tracking-wide">
+                        Save $117 when you enroll in all 3 levels
+                      </p>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── SUMMER COURSE Section ── */}
+          {activeTab === 'summer' && (
+            <div className="animate-in fade-in duration-300">
+              <div className="mb-4">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+                  <div className="flex items-center gap-3 px-6 py-3 rounded-full shadow-md bg-gradient-to-r from-[#0e1f3e] to-[#1e345e]">
+                    <Calendar className="w-5 h-5 text-white animate-pulse" />
+                    <h3 className="text-xl font-extrabold text-white tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      SUMMER PUBLIC SPEAKING PROGRAM
+                    </h3>
+                    <Calendar className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 h-px" style={{ backgroundColor: '#0e1f3e', opacity: 0.3 }}></div>
+                </div>
+              </div>
+
+              <div className="rounded-3xl overflow-hidden shadow-2xl border-2 mb-14 bg-gradient-to-br from-white to-gray-50/50" style={{ borderColor: '#0e1f3e' }}>
+                <div className="lg:grid lg:grid-cols-12 lg:gap-0">
+                  {/* Left Side - Details */}
+                  <div className="lg:col-span-7 p-8 lg:p-12">
+                    <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-amber-500">
+                      Summer 2027 (TBD)
+                    </span>
+                    <h3 className="text-3xl lg:text-4xl font-extrabold mt-4 mb-6 text-[#0e1f3e]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      Summer Public Speaking Course (2027)
+                    </h3>
+                    <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
+                      Our comprehensive 8-week summer program is designed to help participants build lasting confidence, structure powerful arguments, and refine their presentation skills through active practice and personalized guidance.
+                    </p>
+
+                    <div className="grid sm:grid-cols-2 gap-6 mb-4">
+                      <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                        <Clock className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                        <div>
+                          <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Course Schedule</h4>
+                          <p className="text-sm text-gray-500">4 hours a week</p>
+                          <p className="text-sm font-semibold text-[#0e1f3e]">Twice a week (8 weeks)</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                        <Calendar className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                        <div>
+                          <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Session Times</h4>
+                          <p className="text-sm text-gray-500">Every Tue &amp; Thu</p>
+                          <p className="text-sm font-semibold text-[#0e1f3e]">TBD</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                        <MapPin className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                        <div>
+                          <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Class Format</h4>
+                          <p className="text-sm text-gray-500">In-Person Classes</p>
+                          <p className="text-sm font-semibold text-[#0e1f3e]">Virtual option available</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                        <TrendingUp className="w-6 h-6 flex-shrink-0 text-[#ca3433]" />
+                        <div>
+                          <h4 className="font-bold text-[#0e1f3e] text-base mb-0.5">Starts &amp; Ends</h4>
+                          <p className="text-sm text-gray-500">Summer Term</p>
+                          <p className="text-sm font-semibold text-[#0e1f3e]">TBD</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Call to Action */}
+                  <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center text-center text-white relative" style={{ backgroundColor: '#0e1f3e' }}>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(202,52,51,0.15),transparent_60%)] pointer-events-none"></div>
+                    <div className="relative z-10">
+                      <Award className="w-16 h-16 text-[#ca3433] mx-auto mb-6 animate-pulse" />
+                      <h4 className="text-2xl font-extrabold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Join the Waitlist
+                      </h4>
+                      <p className="text-white/80 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
+                        Secure your interest early. Join the waitlist for the Summer 2027 cohort to receive updates first.
+                      </p>
+                      
+                      <button
+                        onClick={() => scrollToInquiry("Summer 2027 Course Inquiry")}
+                        className="w-full px-8 py-4 rounded-full font-bold text-white text-center text-lg transition-all duration-300 hover:scale-[1.03] shadow-lg cursor-pointer bg-[#ca3433] hover:bg-[#b02d2c] border-none"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Inquire &amp; Join Waitlist
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Summer Intensive Schedule details */}
+              <div className="rounded-3xl overflow-hidden shadow-xl border-2 mb-14 p-8 lg:p-12 flex flex-col justify-center text-center" style={{ borderColor: '#ca3433', backgroundColor: '#fcf8f8' }}>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto bg-amber-500">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
+                <h3 className="text-3xl font-bold mb-4 text-[#0e1f3e]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Summer Intensive Schedule
                 </h3>
                 <p className="text-xl font-semibold mb-6" style={{ color: '#ca3433' }}>
-                  Public Speaking Intensive — Limited seats per level
+                  Public Speaking Intensive — Summer 2027 (TBD)
                 </p>
 
-                <div className="space-y-5 mb-8 text-left">
+                <div className="space-y-5 mb-8 text-left max-w-3xl mx-auto w-full">
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 1: Finding Your Voice</p>
                     <p className="text-sm text-gray-600 mb-1">📅 TBD</p>
@@ -528,53 +716,26 @@ export default function Home() {
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
                     <p className="font-semibold text-lg text-[#0e1f3e] mb-2">Level 3: The Persuasive Leader</p>
-                    <p className="text-sm text-gray-600 mb-1">📅 June 28</p>
+                    <p className="text-sm text-gray-600 mb-1">📅 TBD</p>
                     <p className="text-sm text-gray-600">Focus: Advanced storytelling, debate skills, and inspiring action through words.</p>
                   </div>
                 </div>
 
                 <div className="text-sm text-gray-500 mb-8">
                   <p>📍 Exceed Learning Center</p>
-                  <p className="mt-2">DM us to secure a spot — limited seats per level!</p>
+                  <p className="mt-2">DM us or fill out the form below to secure a spot!</p>
                 </div>
 
-                <a
-                  href="#inquiry"
-                  onClick={(e) => { e.preventDefault(); scrollToInquiry(); }}
-                  className="inline-block px-10 py-4 rounded-full font-bold text-white text-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+                <button
+                  onClick={() => scrollToInquiry("Summer 2027 Course Inquiry")}
+                  className="inline-block px-10 py-4 rounded-full font-bold text-white text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 border-none cursor-pointer mx-auto"
                   style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
                 >
                   Inquire &amp; Enroll
-                </a>
-              </div>
-            </div>
-
-            {/* All 3 Levels Bundle CTA */}
-            <div className="mt-8 lg:mt-0 flex flex-col justify-center">
-              <div className="rounded-3xl bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl h-full flex flex-col justify-center transition-all duration-300 hover:shadow-2xl p-1 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine z-0"></div>
-                <button
-                  onClick={() => { setSelectedSchedule("bundle"); setIsModalOpen(true); }}
-                  className="relative z-10 flex flex-col items-center justify-center w-full h-full px-8 py-12 rounded-[22px] font-bold text-white text-center appearance-none border-none cursor-pointer"
-                  style={{ backgroundColor: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}
-                >
-                  <Crown className="w-16 h-16 text-yellow-400 mb-6 drop-shadow-lg mx-auto" />
-                  <h3 className="text-3xl md:text-4xl lg:text-3xl xl:text-4xl mb-4 leading-tight">
-                    Avail All 3 Courses
-                  </h3>
-                  <div className="text-4xl md:text-5xl text-yellow-400 drop-shadow-md mb-6">
-                    $1,200
-                  </div>
-                  <div className="inline-block px-6 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/10">
-                    <p className="text-sm md:text-base font-medium text-gray-200 font-sans tracking-wide">
-                      Save $117 when you enroll in all 3 levels
-                    </p>
-                  </div>
                 </button>
               </div>
             </div>
-            
-          </div>
+          )}
 
           {/* ── INQUIRY FORM Section ── */}
           <div ref={formRef} id="inquiry" className="scroll-mt-20 mb-20">

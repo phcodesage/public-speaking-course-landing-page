@@ -154,7 +154,7 @@ export default function InquiryForm({ initialCourse }: InquiryFormProps) {
                 <option value="Level 1 Crash">Level 1 - Crash Course</option>
                 <option value="Level 2 Crash">Level 2 - Crash Course</option>
                 <option value="Level 3 Crash">Level 3 - Crash Course</option>
-                <option value="Summer Public Speaking">Summer Public Speaking Program</option>
+                <option value="Summer 2027 Course Inquiry">Summer 2027 Public Speaking Program (TBD)</option>
               </select>
             </div>
           </div>
