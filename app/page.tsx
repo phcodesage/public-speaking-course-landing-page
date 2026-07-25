@@ -45,6 +45,10 @@ export default function Home() {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToCourseOptions = () => {
+    document.getElementById('course-options')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const courseLevels: CourseLevel[] = [
     {
       title: 'Level 1',
@@ -105,6 +109,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <PageTracker />
+      {/* Top Enroll Bar — always the first element on the page */}
+      <div className="w-full py-3 px-4" style={{ backgroundColor: '#0e1f3e' }}>
+        <div className="max-w-7xl mx-auto flex items-center justify-center sm:justify-between gap-3">
+          <p className="hidden sm:block text-white/90 text-sm font-medium" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Find Your Voice: Public Speaking Course
+          </p>
+          <button
+            onClick={scrollToCourseOptions}
+            className="px-6 py-2.5 rounded-full font-bold text-sm text-white text-center transition-transform duration-300 hover:scale-105 shadow-sm appearance-none border-none cursor-pointer"
+            style={{ backgroundColor: '#ca3433', fontFamily: 'Montserrat, sans-serif' }}
+          >
+            Enroll Now
+          </button>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Centered Logo */}
         <header className="pt-8 pb-6">
@@ -213,7 +232,7 @@ export default function Home() {
                           className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer bg-red-600"
                           style={{ fontFamily: 'Montserrat, sans-serif' }}
                         >
-                          Enroll in All 3 Levels - $399
+                          Select All 3 Levels - $399
                         </button>
                       </div>
                     </>
@@ -255,7 +274,7 @@ export default function Home() {
                           className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer"
                           style={{ backgroundColor: '#ca3433', fontFamily: 'Montserrat, sans-serif' }}
                         >
-                          Enroll in All 3 Levels - $1,200
+                          Select All 3 Levels - $1,200
                         </button>
                       </div>
                     </>
@@ -308,7 +327,7 @@ export default function Home() {
           </div>
 
           {/* ── COURSE FORMAT SELECTOR ── */}
-          <div className="mb-12 text-center">
+          <div id="course-options" className="mb-12 text-center scroll-mt-24">
             <h3 className="text-2xl font-bold mb-6" style={{ color: '#0e1f3e', fontFamily: 'Montserrat, sans-serif' }}>
               Select Course Option
             </h3>
@@ -429,7 +448,7 @@ export default function Home() {
                             className="block w-full mt-2 px-4 py-3 rounded-full font-semibold text-white text-center text-sm transition-all duration-300 hover:shadow-md hover:opacity-90 appearance-none border-none cursor-pointer"
                             style={{ backgroundColor: course.color }}
                           >
-                            Enroll in Crash Course
+                            Select Crash Course
                           </button>
                         </>
                       ) : (
@@ -453,7 +472,7 @@ export default function Home() {
                   >
                     <Crown className="w-12 h-12 text-yellow-400 mb-4 drop-shadow-lg mx-auto" />
                     <h3 className="text-2xl md:text-3xl mb-2 leading-tight">
-                      Enroll in All 3 Crash Course Levels
+                      Select All 3 Crash Course Levels
                     </h3>
                     <div className="text-4xl text-yellow-400 drop-shadow-md mb-4">
                       $399
@@ -555,7 +574,7 @@ export default function Home() {
                           className="block w-full px-6 py-4 rounded-full font-semibold text-white text-center text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 appearance-none border-none cursor-pointer"
                           style={{ backgroundColor: course.color }}
                         >
-                          Enroll Now
+                          Select Level Option
                         </button>
                       ) : (
                         <div
