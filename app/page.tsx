@@ -222,9 +222,9 @@ export default function Home() {
                           </div>
                           <div className="flex flex-col">
                             <h4 className="font-extrabold text-[#0e1f3e] text-sm sm:text-base leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                              🎉 SIGNUP ALL 3 FOR $399!
+                              🎉 SIGNUP ALL 3 FOR $499!
                             </h4>
-                            <p className="text-[13px] text-gray-500 leading-tight mt-1">Save $18 when you enroll in all levels</p>
+                            <p className="text-[13px] text-gray-500 leading-tight mt-1">Enroll in all 3 crash course levels</p>
                           </div>
                         </div>
                         <button
@@ -232,7 +232,7 @@ export default function Home() {
                           className="w-full py-3.5 rounded-xl font-bold text-white text-center text-[17px] transition-transform duration-300 hover:scale-[1.02] shadow-sm appearance-none border-none cursor-pointer bg-red-600"
                           style={{ fontFamily: 'Montserrat, sans-serif' }}
                         >
-                          Select All 3 Levels - $399
+                          Select All 3 Levels - $499
                         </button>
                       </div>
                     </>
@@ -475,11 +475,11 @@ export default function Home() {
                       Select All 3 Crash Course Levels
                     </h3>
                     <div className="text-4xl text-yellow-400 drop-shadow-md mb-4">
-                      $399
+                      $499
                     </div>
                     <div className="inline-block px-6 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/10">
                       <p className="text-sm font-medium text-gray-200 font-sans tracking-wide">
-                        Save $18 when you enroll in all 3 crash levels!
+                        Enroll in all 3 crash levels!
                       </p>
                     </div>
                   </button>

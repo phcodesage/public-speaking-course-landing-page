@@ -18,9 +18,9 @@ export const COURSE_SCHEDULES = [
   { id: "level-2-crash", name: "Level 2 - Crash Course ($139)", link: "https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i" },
   { id: "level-3-crash", name: "Level 3 - Crash Course ($139)", link: "https://buy.stripe.com/7sY8wI4q0gUGaWd2SfdfG0i" },
   { id: "bundle", name: "All 3 Levels Full Course Bundle ($1,200)", link: "https://buy.stripe.com/14A3co1dO1ZM9S950ndfG0b" },
-  // No Stripe link exists for the $399 bundle yet; an empty link hides the card
+  // No Stripe link exists for the $499 bundle yet; an empty link hides the card
   // option so it can never fall through to a single-level ($139) checkout.
-  { id: "crash-bundle", name: "All 3 Levels Crash Course Bundle ($399)", link: "" },
+  { id: "crash-bundle", name: "All 3 Levels Crash Course Bundle ($499)", link: "" },
 ];
 
 export default function RegistrationModal({ isOpen, onClose, defaultSchedule }: RegistrationModalProps) {
@@ -99,7 +99,7 @@ export default function RegistrationModal({ isOpen, onClose, defaultSchedule }: 
   }
 
   function getCashPrice(scheduleId: string): string {
-    if (scheduleId === 'crash-bundle') return '$399';
+    if (scheduleId === 'crash-bundle') return '$499';
     if (scheduleId.includes('crash')) return '$139';
     if (scheduleId === 'bundle') return '$1,200';
     return '$439';
