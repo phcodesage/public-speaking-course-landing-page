@@ -17,7 +17,7 @@ export const COURSE_SCHEDULES = [
   { id: "level-1-crash", name: "Level 1 - Crash Course ($139)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=72731237-5304-11f1-a8e1-12a0879a85b1" },
   { id: "level-2-crash", name: "Level 2 - Crash Course ($139)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=72731237-5304-11f1-a8e1-12a0879a85b1" },
   { id: "level-3-crash", name: "Level 3 - Crash Course ($139)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=72731237-5304-11f1-a8e1-12a0879a85b1" },
-  { id: "bundle", name: "All 3 Levels Full Course Bundle ($1,200)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=a07475d6-5304-11f1-a8e1-12a0879a85b1" },
+  { id: "bundle", name: "All 3 Levels Full Course Bundle ($1,200)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=e6dd103b-8b5a-11f1-ab1a-128462456e49" },
   { id: "crash-bundle", name: "All 3 Levels Crash Course Bundle ($499)", link: "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=72731237-5304-11f1-a8e1-12a0879a85b1" },
 ];
 
