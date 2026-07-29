@@ -33,11 +33,14 @@ export default function RegistrationModal({ isOpen, onClose, defaultSchedule }: 
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [selectedScheduleData, setSelectedScheduleData] = useState<typeof COURSE_SCHEDULES[0] | null>(null);
 
-  // Sync form schedule when modal opens with a new default schedule
+  // Reset all state when modal opens with a new schedule
   useEffect(() => {
     if (isOpen && defaultSchedule) {
       setForm((f) => ({ ...f, schedule: defaultSchedule }));
+      setLoading(false);
       setError("");
+      setPaymentModalOpen(false);
+      setSelectedScheduleData(null);
     }
   }, [isOpen, defaultSchedule]);
 
